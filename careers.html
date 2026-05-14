@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers | Cerevyn AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-dark: #06091f;
+            --primary-blue: #3b82f6;
+            --text-gray: #94a3b8;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --footer-bg: #030512;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--bg-dark); font-family: 'Plus Jakarta Sans', sans-serif; color: white; line-height: 1.6; }
+        .container { width: 90%; max-width: 1200px; margin: auto; }
+
+        /* Navigation */
+        .header-nav { display: flex; justify-content: flex-end; padding: 40px 0; }
+        .nav-pill {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 10px 30px; border-radius: 50px; border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex; gap: 25px; font-size: 13px; backdrop-filter: blur(12px);
+        }
+        .nav-pill a { color: white; text-decoration: none; opacity: 0.7; }
+        .nav-pill a.active { color: var(--primary-blue); font-weight: 700; opacity: 1; }
+
+        /* Hero */
+        .hero { text-align: center; padding: 80px 0; }
+        .hero h1 { font-size: 56px; font-weight: 800; margin-bottom: 20px; }
+        .hero p { color: var(--text-gray); max-width: 700px; margin: 0 auto 40px; font-size: 15px; }
+        .btn-group { display: flex; justify-content: center; gap: 15px; }
+        .btn-blue { background: var(--primary-blue); color: white; padding: 12px 28px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 14px; }
+        .btn-outline { border: 1px solid rgba(255,255,255,0.2); color: white; padding: 12px 28px; border-radius: 50px; text-decoration: none; font-size: 14px; }
+
+        /* Grid Styling */
+        .section-header { text-align: center; margin: 80px 0 50px; }
+        .section-header h2 { font-size: 32px; margin-bottom: 15px; }
+        .grid-4, .grid-3 { display: grid; gap: 20px; }
+        .grid-4 { grid-template-columns: repeat(4, 1fr); }
+        .grid-3 { grid-template-columns: repeat(3, 1fr); }
+        
+        .card { background: var(--card-bg); padding: 25px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); }
+        .card h3 { font-size: 16px; margin-bottom: 10px; }
+        .card p { font-size: 12px; color: var(--text-gray); }
+
+        /* Role Cards */
+        .tab-bar { background: rgba(255,255,255,0.05); padding: 5px; border-radius: 50px; display: inline-flex; margin: 30px 0 50px; border: 1px solid rgba(255,255,255,0.1); }
+        .tab { padding: 8px 25px; border-radius: 50px; font-size: 13px; cursor: pointer; color: var(--text-gray); }
+        .tab.active { background: var(--primary-blue); color: white; }
+
+        .role-card { background: white; border-radius: 15px; padding: 25px; color: #334155; text-align: left; }
+        .badge { background: #eff6ff; color: #3b82f6; font-size: 10px; padding: 3px 10px; border-radius: 4px; font-weight: 700; display: inline-block; margin-bottom: 10px; }
+        .role-card h4 { font-size: 16px; color: #0f172a; margin-bottom: 15px; border-bottom: 1px solid #f1f5f9; padding-bottom: 10px; }
+        .role-card h5 { font-size: 13px; color: #0f172a; margin: 10px 0 5px; }
+        .role-card p { font-size: 11px; color: #64748b; margin-bottom: 10px; }
+        .apply-btn { background: var(--primary-blue); color: white; border: none; padding: 10px; border-radius: 6px; width: 100%; cursor: pointer; font-weight: 600; }
+
+        /* Ready to Transform Section (Matches Image 1) */
+        .ready-section { background: var(--primary-blue); padding: 100px 0; text-align: center; margin-top: 100px; }
+        .ready-section h2 { font-size: 40px; font-weight: 800; margin-bottom: 20px; }
+        .ready-section p { max-width: 800px; margin: 0 auto 40px; font-size: 15px; opacity: 0.9; }
+        .ready-btns { display: flex; justify-content: center; gap: 20px; }
+        .btn-white-pill { background: white; color: var(--primary-blue); padding: 12px 35px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 14px; }
+        .btn-outline-pill { border: 1.5px solid white; color: white; padding: 12px 35px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 14px; }
+
+        /* Footer Styling (Matches Image 2) */
+        footer { background: var(--footer-bg); padding: 80px 0 40px; }
+        .footer-grid { display: grid; grid-template-columns: 1.2fr 0.8fr 1fr 1fr; gap: 40px; margin-bottom: 60px; }
+        
+        .footer-logo-area img { height: 40px; margin-bottom: 20px; }
+        .footer-logo-area .logo-placeholder { width: 150px; height: 45px; background: #e2e8f0; border-radius: 8px; margin-bottom: 25px; }
+        .footer-logo-area p { font-size: 13px; color: var(--text-gray); margin-bottom: 25px; line-height: 1.6; }
+        .social-links { display: flex; gap: 15px; }
+        .social-links a { color: white; font-size: 18px; opacity: 0.8; }
+
+        .footer-col h4 { font-size: 15px; margin-bottom: 25px; font-weight: 700; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 12px; position: relative; padding-left: 15px; }
+        .footer-col ul li::before { content: "•"; position: absolute; left: 0; color: white; }
+        .footer-col ul li a { color: var(--text-gray); text-decoration: none; font-size: 13px; }
+
+        .newsletter-box p { font-size: 13px; margin-bottom: 20px; }
+        .input-group { position: relative; margin-bottom: 15px; }
+        .input-group input { width: 100%; background: #f1f5f9; border: none; padding: 15px 20px; border-radius: 10px; font-size: 13px; color: #334155; }
+        .subscribe-btn { width: 100%; background: var(--primary-blue); color: white; border: none; padding: 15px; border-radius: 10px; font-weight: 700; cursor: pointer; }
+
+        .contact-box h4 { font-size: 15px; margin-top: 30px; margin-bottom: 15px; }
+        .contact-box p { font-size: 13px; color: var(--text-gray); margin-bottom: 8px; }
+        .contact-box span { color: white; font-weight: 600; }
+
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.05); padding-top: 30px; display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--text-gray); }
+        .footer-links { display: flex; gap: 20px; }
+        .made-with { color: white; font-weight: 600; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header class="header-nav">
+        <nav class="nav-pill">
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="products.html">Products</a>
+            <a href="#">Resources ⌵</a>
+            <a href="careers.html" class="active">Careers</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Build The Future With AI</h1>
+        <p>Join Cerevyn and help shape the next generation of AI that transforms healthcare, education, and business automation worldwide.</p>
+        <div class="btn-group">
+            <a href="#roles" class="btn-blue">View Open Roles</a>
+            <a href="#" class="btn-outline">Our Culture</a>
+        </div>
+    </section>
+
+    <!-- Culture Section -->
+    <div class="section-header">
+        <h2>Our Culture & Values</h2>
+        <p>We're building more than AI products - we're building a community of innovators who care about impact.</p>
+    </div>
+    <div class="grid-4">
+        <div class="card"><h3>Innovation First</h3><p>We encourage experimentation and reward creative problem-solving.</p></div>
+        <div class="card"><h3>Impact Driven</h3><p>Every project aims to create meaningful change in Industries</p></div>
+        <div class="card"><h3>Collaborative Excellence</h3><p>We believe in the power of diverse perspectives and teamwork.</p></div>
+        <div class="card"><h3>Continuous Learning</h3><p>We invest in your growth with regar training and development.</p></div>
+    </div>
+
+    <!-- Career Roles Section -->
+    <section id="roles" style="text-align: center; margin-top: 100px;">
+        <h2>Join Our Team</h2>
+        <div class="tab-bar">
+            <div class="tab active">Internship Roles</div>
+            <div class="tab">Full-Time Roles</div>
+        </div>
+        <div class="grid-3">
+            <div class="role-card">
+                <span class="badge">3-6 Months Intern</span>
+                <h4>Full Stack Development Intern</h4>
+                <h5>Focus Areas</h5><p>React, TypeScript, Node.js, and cloud-first architectures for enterprise AI products.</p>
+                <h5>You'll Experience</h5><p>React, TypeScript, Node.js, and cloud-first architectures for enterprise AI products.</p>
+                <button class="apply-btn">Apply Now</button>
+            </div>
+            <div class="role-card">
+                <span class="badge">3-6 Months Intern</span>
+                <h4>AI & Machine Learning Intern</h4>
+                <h5>Focus Areas</h5><p>Model experimentation, data pipelines, and applied ML for healthcare, education, and automation.</p>
+                <h5>You'll Experience</h5><p>Ship ML prototypes to production and learn model lifecycle management with real datasets.</p>
+                <button class="apply-btn">Apply Now</button>
+            </div>
+            <div class="role-card">
+                <span class="badge">3-6 Months Intern</span>
+                <h4>Agentic AI Intern</h4>
+                <h5>Focus Areas</h5><p>LLM integration, retrieval augmented generation, and autonomous agent workflows.</p>
+                <h5>You'll Experience</h5><p>Design intelligent agents that orchestrate API, memory systems, and multi-modal experiences.</p>
+                <button class="apply-btn">Apply Now</button>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- Ready to Transform Section (Exact Match to Image 1) -->
+<section class="ready-section">
+    <div class="container">
+        <h2>Ready to Transform Your Business?</h2>
+        <p>Partner with Cerevyn to leverage cutting-edge AI solutions including drones, surveying, and automation that drive innovation and create competitive advantages in your industry.</p>
+        <div class="ready-btns">
+            <a href="#" class="btn-white-pill">Start Your AI Journey</a>
+            <a href="#" class="btn-outline-pill">Learn About Us</a>
+        </div>
+    </div>
+</section>
+
+<!-- Footer (Exact Match to Image 2) -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-logo-area">
+                <div class="logo-placeholder"></div>
+                <p>A global AI company transforming healthcare, education, and business operations with intelligent solutions designed for a smarter, more connected tomorrow.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Mission & Vision</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Tutorials</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Our Services</h4>
+                <ul>
+                    <li><a href="#">AI Healthcare Solutions</a></li>
+                    <li><a href="#">AI Education Platforms</a></li>
+                    <li><a href="#">AI Development Services</a></li>
+                    <li><a href="#">AI Automation Systems</a></li>
+                    <li><a href="#">Agentic AI Solutions</a></li>
+                    <li><a href="#">Entity Management Portal</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col newsletter-box">
+                <p>Subscribe to our newsletter for AI insights and updates.</p>
+                <div class="input-group">
+                    <input type="text" placeholder="Your email address">
+                </div>
+                <button class="subscribe-btn">Subscribe</button>
+
+                <div class="contact-box">
+                    <h4>Contact Us</h4>
+                    <p>Email Us: <span>info@cerevyn.com</span></p>
+                    <p>Call Us: <span>+91 78935 25665</span></p>
+                    <p style="margin-top: 15px; font-size: 11px;">Our Headquarters:<br>T-Hub, Hyderabad Knowledge City, Serilingampally, Hyderabad, Telangana 500081, India.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 Cerevyn Solutions Pvt Ltd. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#" style="color: inherit; text-decoration: none;">Privacy Policy</a>
+                <a href="#" style="color: inherit; text-decoration: none;">Terms of Service</a>
+                <a href="#" style="color: inherit; text-decoration: none;">Cookie Policy</a>
+                <a href="#" style="color: inherit; text-decoration: none;">Sitemap</a>
+                <span class="made-with">Made with passion in India</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

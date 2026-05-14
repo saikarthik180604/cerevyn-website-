@@ -1,0 +1,221 @@
+/* --- BASE STYLES --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #050816;
+    color: white;
+    overflow-x: hidden;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* --- CORPORATE HEADER --- */
+.top-nav-corporate {
+    position: absolute;
+    width: 100%;
+    top: 25px;
+    z-index: 1001;
+}
+
+.nav-flex-corporate {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-corporate {
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 1;
+}
+
+.logo-corporate span {
+    display: block;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: #94a3b8;
+    text-transform: uppercase;
+    font-weight: 400;
+}
+
+.nav-links-corporate {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+
+.nav-links-corporate a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    opacity: 0.8;
+    transition: 0.3s;
+}
+
+.nav-links-corporate a:hover {
+    opacity: 1;
+    color: #3b82f6;
+}
+
+/* --- CORPORATE HERO --- */
+.hero-corporate {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding-top: 80px;
+}
+
+.hero-corporate::before {
+    content: '';
+    position: absolute;
+    width: 160%;
+    height: 100%;
+    background: linear-gradient(110deg, rgba(37, 99, 235, 0.15) 0%, transparent 40%);
+    top: 0;
+    left: -20%;
+    transform: skewX(-15deg);
+    z-index: 1;
+}
+
+.text-box-left h1 {
+    font-size: 82px;
+    text-align: left;
+    line-height: 1.1;
+    font-weight: 800;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-buttons {
+    margin-top: 40px;
+    display: flex;
+    gap: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.primary-btn, .secondary-btn {
+    padding: 15px 35px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.primary-btn { background: #2563eb; color: white; }
+.secondary-btn { background: white; color: black; }
+.primary-btn:hover, .secondary-btn:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+
+/* --- THE 3-IN-A-ROW WHITE CARD FIX --- */
+.why-section-white {
+    padding: 100px 0;
+    background: #050816;
+}
+
+.figma-white-card {
+    background: white;
+    padding: 80px 40px;
+    border-radius: 30px;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.why-grid-row {
+    display: flex; /* Key fix: forces items to stay horizontal */
+    justify-content: space-between;
+    gap: 25px;
+}
+
+.why-card-light {
+    flex: 1; /* Makes each card take equal width */
+    background: transparent;
+    border: 1px solid #e2e8f0;
+    border-radius: 20px;
+    padding: 30px;
+    color: #1e293b;
+    transition: 0.3s;
+}
+
+.why-card-light:hover {
+    border-color: #3b82f6;
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.icon-box {
+    width: 50px; 
+    height: 50px; 
+    background: #eff6ff;
+    border-radius: 50%; 
+    display: flex; 
+    align-items: center;
+    justify-content: center; 
+    color: #2563eb; 
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.why-card-light h3 { 
+    font-size: 22px; 
+    font-weight: 700; 
+    margin-bottom: 10px; 
+}
+
+.card-subtitle { 
+    font-weight: 600; 
+    font-size: 14px; 
+    color: #334155; 
+    margin-bottom: 8px; 
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.card-detail { 
+    font-size: 13px; 
+    color: #64748b; 
+    line-height: 1.6; 
+}
+
+/* --- FOOTER --- */
+footer { 
+    background: #020617; 
+    padding: 40px 0; 
+}
+
+.copyright { 
+    text-align: center; 
+    color: #94a3b8; 
+    font-size: 14px; 
+}
+
+/* --- RESPONSIVE --- */
+@media(max-width:992px){
+    .why-grid-row { flex-direction: column; } /* Stacks on tablet/mobile */
+    .text-box-left h1 { font-size: 58px; }
+    .figma-white-card { padding: 40px 20px; }
+}
+
+@media(max-width:768px){
+    .text-box-left h1 { font-size: 42px; }
+    .nav-links-corporate { display: none; }
+    .hero-buttons { flex-direction: column; width: 100%; }
+    .primary-btn, .secondary-btn { text-align: center; }
+}

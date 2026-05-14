@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cerevyn AI | Smarter Tomorrow</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-blue: #0024DE;
+            --primary-accent: #72CCFC;
+            --dark-bg: #070F3A;
+            --darker-bg: #000000;
+            --text-light: #E6E5FF;
+            --text-muted: #A3A3A3;
+            --surface: rgba(255, 255, 255, 0.06);
+            --surface-strong: rgba(255, 255, 255, 0.10);
+            --border-color: rgba(114, 204, 252, 0.18);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background: linear-gradient(180deg, #070F3A 0%, #000000 100%);
+            color: white; 
+            line-height: 1.6; 
+            overflow-x: hidden;
+        }
+        .container { width: 90%; max-width: 1250px; margin: auto; }
+
+        /* === NAVIGATION === */
+        nav {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 20px 40px;
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            z-index: 100;
+        }
+        .logo { 
+            display: none;
+        }
+        .nav-links { 
+            display: flex; 
+            list-style: none; 
+            gap: 35px;
+            background: rgba(7, 15, 58, 0.75);
+            padding: 14px 35px;
+            border-radius: 50px;
+            backdrop-filter: blur(18px);
+            border: 1px solid rgba(114, 204, 252, 0.18);
+        }
+        .nav-links a { 
+            color: #d0d8e8; 
+            text-decoration: none; 
+            font-size: 14px; 
+            font-weight: 500; 
+            transition: 0.3s;
+        }
+        .nav-links a:hover { color: white; }
+
+        /* === HERO SECTION === */
+        .hero {
+            padding: 180px 0 220px;
+            background: linear-gradient(180deg, var(--dark-bg) 0%, var(--darker-bg) 100%), url('assets/pic_1.png') center/cover no-repeat;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at top, rgba(114, 204, 252, 0.14), transparent 30%);
+            pointer-events: none;
+        }
+        .hero .container { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; }
+        .hero h1 { 
+            font-size: 72px; 
+            font-weight: 800; 
+            line-height: 1.2; 
+            margin-bottom: 25px; 
+            letter-spacing: -1.5px;
+        }
+        .hero p { 
+            color: var(--text-muted); 
+            max-width: 750px; 
+            margin-bottom: 45px; 
+            font-size: 17px;
+            line-height: 1.8;
+        }
+        .btn-group { 
+            display: flex; 
+            gap: 25px; 
+            align-items: center; 
+            justify-content: center;
+        }
+        .btn { 
+            padding: 16px 40px; 
+            border-radius: 50px; 
+            text-decoration: none; 
+            font-weight: 700; 
+            transition: 0.3s; 
+            display: inline-block; 
+            cursor: pointer; 
+            border: none; 
+            font-size: 16px;
+        }
+        .btn-blue { 
+            background: var(--primary-blue); 
+            color: white;
+            min-width: 200px;
+        }
+        .btn-blue:hover { background: #001BBF; }
+        .btn-white { 
+            background: rgba(255, 255, 255, 0.94); 
+            color: var(--dark-bg);
+            min-width: 180px;
+        }
+        .btn-white:hover { background: white; }
+
+        /* === WHY CHOOSE SECTION === */
+        .why-section {
+            padding: 120px 0;
+            background: transparent;
+            text-align: center;
+        }
+        .why-section h2 { font-size: 56px; font-weight: 800; margin-bottom: 15px; }
+        .why-section > .container > p { 
+            color: var(--text-muted); 
+            font-size: 17px; 
+            max-width: 650px; 
+            margin: 0 auto 70px;
+        }
+        .grid-3 { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 30px; 
+        }
+        .why-card { 
+            padding: 45px 30px; 
+            border: 1px solid rgba(114, 204, 252, 0.18); 
+            border-radius: 28px; 
+            transition: transform 0.4s ease, border-color 0.4s ease, background 0.4s ease;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(18px);
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.18);
+        }
+        .why-card:hover { 
+            border-color: rgba(114, 204, 252, 0.55);
+            background: rgba(114, 204, 252, 0.12);
+            transform: translateY(-10px);
+        }
+        .why-card i { 
+            font-size: 48px; 
+            margin-bottom: 25px; 
+            display: block; 
+            color: var(--primary-accent);
+        }
+        .why-card h3 { font-size: 24px; margin-bottom: 15px; font-weight: 700; }
+        .why-card p { color: var(--text-muted); font-size: 15px; line-height: 1.7; }
+
+        /* === SERVICES SECTION === */
+        .services {
+            padding: 80px 0 120px;
+            background: transparent;
+        }
+        .services-header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        .services-header-left span { 
+            color: var(--primary-accent); 
+            font-size: 14px; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            display: block; 
+            margin-bottom: 16px;
+        }
+        .services-header-left h2 { 
+            font-size: 56px; 
+            font-weight: 800; 
+            margin-bottom: 0;
+            max-width: 520px;
+            line-height: 1.1;
+            color: white;
+        }
+        .services-header-right {
+            text-align: right;
+            max-width: 420px;
+        }
+        .services-header-right p { 
+            color: var(--text-muted); 
+            font-size: 16px; 
+            margin-bottom: 25px;
+            line-height: 1.8;
+        }
+        .services-header-right .btn-white {
+            background: rgba(255,255,255,0.08);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.12);
+        }
+        .services-header-right .btn-white:hover {
+            background: rgba(255,255,255,0.14);
+        }
+        .services-timeline {
+            position: relative;
+            display: grid;
+            gap: 80px;
+            padding-top: 30px;
+        }
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            top: 0;
+            bottom: 0;
+            background: rgba(114, 204, 252, 0.18);
+            z-index: 1;
+        }
+        .service-item {
+            display: grid;
+            grid-template-columns: 1fr 96px 1fr;
+            grid-template-areas: "image dot content";
+            gap: 48px;
+            align-items: center;
+            position: relative;
+            padding: 40px 0;
+        }
+        .service-item:nth-child(even) {
+            grid-template-areas: "content dot image";
+        }
+        .timeline-dot {
+            grid-area: dot;
+            align-self: center;
+            justify-self: center;
+            width: 72px;
+            height: 72px;
+            background: linear-gradient(135deg, var(--primary-blue), #1452f2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            z-index: 3;
+            flex-shrink: 0;
+            border: 3px solid rgba(255,255,255,0.08);
+            box-shadow: 0 18px 36px rgba(0, 36, 222, 0.24);
+            font-weight: 700;
+            line-height: 1;
+        }
+        .service-image {
+            grid-area: image;
+            width: 100%;
+            min-height: 360px;
+            border-radius: 26px;
+            overflow: hidden;
+            background: rgba(255,255,255,0.04);
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05);
+        }
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        .service-item:hover .service-image img {
+            transform: scale(1.04);
+        }
+        .service-content {
+            grid-area: content;
+            padding: 0;
+            color: var(--text-light);
+            text-align: left;
+            max-width: 540px;
+        }
+        .service-icon {
+            width: 56px;
+            height: 56px;
+            background: rgba(114, 204, 252, 0.14);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            color: var(--primary-accent);
+            margin-bottom: 22px;
+        }
+        .service-content h3 { 
+            font-size: 34px; 
+            font-weight: 800; 
+            margin-bottom: 18px;
+            line-height: 1.15;
+            color: white;
+        }
+        .service-content p { 
+            color: var(--text-muted);
+            font-size: 16px; 
+            line-height: 1.85;
+            margin-bottom: 22px;
+        }
+        .service-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .service-tag {
+            border: 1px solid rgba(114, 204, 252, 0.28);
+            color: var(--text-light);
+            padding: 10px 18px;
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 600;
+            background: rgba(114, 204, 252, 0.06);
+            transition: 0.3s;
+        }
+        .service-tag:hover {
+            background: rgba(114, 204, 252, 0.16);
+            border-color: rgba(114, 204, 252, 0.45);
+            color: white;
+        }
+        @media (max-width: 992px) {
+            .services-header-top {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .services-header-right {
+                text-align: left;
+                max-width: 100%;
+            }
+            .service-item {
+                grid-template-columns: 1fr;
+                gap: 25px;
+                padding-left: 0;
+            }
+            .service-item:nth-child(even) .service-image,
+            .service-item:nth-child(even) .service-content {
+                order: unset;
+            }
+            .services-timeline {
+                padding-left: 20px;
+            }
+            .timeline-line {
+                left: 30px;
+            }
+            .timeline-dot {
+                position: absolute;
+                left: 0;
+                margin-left: -36px;
+            }
+        }
+
+        /* === PRODUCTS SECTION === */
+        .products {
+            padding: 120px 0;
+            background: transparent;
+        }
+        .products-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 70px;
+        }
+        .products-header-left span { color: var(--text-muted); font-size: 13px; text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 10px; }
+        .products-header-left h2 { font-size: 56px; font-weight: 800; margin-bottom: 20px; }
+        .products-header-right {
+            text-align: right;
+            max-width: 450px;
+        }
+        .products-header-right p { color: var(--text-muted); font-size: 16px; margin-bottom: 25px; }
+
+        .prod-grid { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 30px;
+        }
+        .prod-card { 
+            background: rgba(7, 15, 58, 0.88);
+            border-radius: 24px; 
+            overflow: hidden;
+            color: white; 
+            transition: 0.4s ease;
+            border: 1px solid rgba(114, 204, 252, 0.18);
+        }
+        .prod-card:hover { 
+            transform: translateY(-10px);
+            border-color: var(--primary-blue);
+        }
+        .prod-img { 
+            width: 100%; 
+            height: 260px; 
+            background: rgba(7, 15, 58, 0.55); 
+            overflow: hidden;
+        }
+        .prod-img img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover;
+        }
+        .prod-body { 
+            padding: 30px;
+        }
+        .prod-body h4 { 
+            font-size: 22px; 
+            font-weight: 700; 
+            margin-bottom: 15px; 
+            line-height: 1.3;
+        }
+        .prod-body p { 
+            color: var(--text-muted); 
+            font-size: 14px; 
+            margin-bottom: 25px; 
+            line-height: 1.7;
+        }
+        .prod-tags { 
+            display: flex; 
+            flex-wrap: wrap; 
+            gap: 8px; 
+            margin-bottom: 25px;
+        }
+        .prod-tag { 
+            background: rgba(114, 204, 252, 0.16);
+            color: var(--primary-accent);
+            padding: 6px 12px;
+            border-radius: 50px;
+            font-size: 11px;
+            font-weight: 600;
+            border: 1px solid rgba(114, 204, 252, 0.20);
+        }
+        .prod-link { 
+            color: white; 
+            text-decoration: none; 
+            font-size: 14px; 
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.3s;
+        }
+        .prod-link:hover { color: var(--primary-blue); }
+
+        /* === PRINCIPLES SECTION === */
+        .principles {
+            padding: 120px 0;
+            background: transparent;
+        }
+        .principles span:first-child { 
+            color: var(--text-muted); 
+            font-size: 13px; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            display: block; 
+            margin-bottom: 10px;
+        }
+        .principles h2 { 
+            font-size: 56px; 
+            font-weight: 800; 
+            margin-bottom: 20px;
+        }
+        .principles > .container > span:last-of-type { 
+            color: var(--text-muted); 
+            font-size: 16px;
+            display: block;
+            margin-bottom: 70px;
+        }
+        .grid-4 { 
+            display: grid; 
+            grid-template-columns: repeat(4, 1fr); 
+            gap: 24px;
+        }
+        .principle-card { 
+            position: relative;
+            overflow: hidden;
+            min-height: 220px;
+            padding: 34px 28px;
+            border: 1px solid rgba(217, 217, 217, 0.12);
+            border-radius: 24px;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(8, 21, 159, 0.95) 0%, rgba(10, 34, 125, 0.92) 45%, rgba(114, 204, 252, 0.22) 100%);
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.24);
+            backdrop-filter: blur(18px);
+            transition: transform 0.4s ease, border-color 0.4s ease;
+        }
+        .principle-card::before {
+            content: '';
+            position: absolute;
+            right: -20%;
+            top: 20%;
+            width: 180px;
+            height: 180px;
+            background: radial-gradient(circle, rgba(114, 204, 252, 0.28), transparent 55%);
+            filter: blur(12px);
+            pointer-events: none;
+        }
+        .principle-card::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(255,255,255,0.18) 0%, rgba(217,217,217,0.53) 100%);
+            opacity: 0.35;
+            pointer-events: none;
+        }
+        .principle-card:hover {
+            border-color: rgba(114, 204, 252, 0.55);
+            transform: translateY(-8px);
+        }
+        .principle-card i { 
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 22px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px; 
+            color: white;
+            background: rgba(255, 255, 255, 0.12);
+            border-radius: 18px;
+        }
+        .principle-card h4 { font-size: 20px; font-weight: 700; margin-bottom: 12px; color: white; }
+        .principle-card p { color: rgba(255, 255, 255, 0.82); font-size: 14px; line-height: 1.75; }
+
+        /* === PARTNERS SECTION === */
+        .partners {
+            padding: 80px 0 40px;
+            background: transparent;
+        }
+        .partners h2 { 
+            font-size: 48px; 
+            font-weight: 800; 
+            margin-bottom: 15px; 
+            color: white;
+        }
+        .partners > .container > span {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 16px;
+            display: block;
+            margin-bottom: 40px;
+        }
+        .partners-grid {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            align-items: center;
+            overflow-x: auto;
+            padding: 40px 24px;
+            background: #08159F;
+            border-radius: 30px;
+            min-height: 220px;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+        .partners-grid::-webkit-scrollbar {
+            height: 8px;
+        }
+        .partners-grid::-webkit-scrollbar-thumb {
+            background: rgba(255,255,255,0.18);
+            border-radius: 999px;
+        }
+        .partner-logo {
+            min-width: 200px;
+            height: 140px;
+            flex: 0 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            border: none;
+            border-radius: 20px;
+            scroll-snap-align: center;
+            box-shadow: none;
+            transition: transform 0.3s ease;
+        }
+        .partner-logo:hover {
+            transform: translateY(-4px);
+        }
+        .partner-logo img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            filter: brightness(1.05);
+        }
+
+        /* === TESTIMONIALS SECTION === */
+        .testimonials {
+            padding: 120px 0;
+            background: transparent;
+        }
+        .testimonials span:first-child { 
+            color: var(--text-muted); 
+            font-size: 13px; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+        }
+        .testimonials h2 { 
+            font-size: 56px; 
+            font-weight: 800; 
+            margin-bottom: 15px;
+        }
+        .testimonials > .container > span:last-of-type { 
+            color: var(--text-muted); 
+            font-size: 16px;
+            display: block;
+            margin-bottom: 70px;
+        }
+        .test-grid { 
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 40px;
+        }
+        .test-card { 
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr 260px;
+            gap: 30px;
+            background: linear-gradient(180deg, rgba(4, 14, 55, 0.96) 0%, rgba(8, 21, 96, 0.92) 100%);
+            padding: 40px;
+            border-radius: 24px;
+            border: 1px solid rgba(114, 204, 252, 0.18);
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25);
+            min-height: 280px;
+        }
+        .test-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            border-radius: 24px;
+            background: linear-gradient(135deg, rgba(114, 204, 252, 0.08) 0%, transparent 40%);
+            opacity: 0.6;
+            pointer-events: none;
+        }
+        .test-card > * {
+            position: relative;
+            z-index: 1;
+        }
+        .test-pfp { 
+            width: 100%; 
+            min-height: 240px;
+            background: rgba(221, 221, 255, 0.8);
+            border-radius: 24px;
+            flex-shrink: 0;
+        }
+        .test-content h4 { 
+            font-size: 22px; 
+            font-weight: 700; 
+            margin-bottom: 10px;
+            color: white;
+        }
+        .test-role { 
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        .test-quote { 
+            color: rgba(255, 255, 255, 0.92); 
+            font-size: 15px; 
+            line-height: 1.8;
+            margin-bottom: 20px;
+            max-width: 100%;
+        }
+        .stars { 
+            color: #fbbf24; 
+            font-size: 16px; 
+            letter-spacing: 2px;
+        }
+        @media (max-width: 992px) {
+            .test-grid { grid-template-columns: 1fr; }
+            .test-card { grid-template-columns: 1fr; }
+            .partners-grid { padding: 30px 18px; gap: 24px; }
+        }
+
+        /* === CTA SECTION === */
+        .cta-section {
+            padding: 120px 0;
+            background: transparent;
+            text-align: center;
+        }
+        .cta-section h2 { 
+            font-size: 56px; 
+            font-weight: 800; 
+            margin-bottom: 25px;
+            color: white;
+        }
+        .cta-section p { 
+            color: rgba(255, 255, 255, 0.9); 
+            font-size: 17px; 
+            max-width: 750px;
+            margin: 0 auto 45px;
+            line-height: 1.8;
+        }
+
+        /* === FOOTER === */
+        footer {
+            background: transparent;
+            padding: 80px 0 30px;
+            border-top: none;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+        .footer-col h4 { 
+            font-size: 16px; 
+            font-weight: 700; 
+            margin-bottom: 25px;
+        }
+        .footer-logo-box {
+            background: rgba(255, 255, 255, 0.08);
+            width: 280px;
+            height: 80px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+        .footer-col p { 
+            color: var(--text-muted); 
+            font-size: 14px; 
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+        .footer-col ul {
+            list-style: none;
+            padding: 0;
+        }
+        .footer-col li { 
+            color: var(--text-muted); 
+            font-size: 14px; 
+            margin-bottom: 12px; 
+            cursor: pointer; 
+            transition: 0.3s;
+        }
+        .footer-col li:hover { color: white; }
+        .social-icons { 
+            display: flex; 
+            gap: 15px; 
+            margin-top: 25px;
+        }
+        .social-icons a { 
+            width: 45px;
+            height: 45px;
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .social-icons a:hover { 
+            border-color: var(--primary-blue);
+            color: white;
+        }
+        .footer-subscribe {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .footer-subscribe input {
+            padding: 12px 16px;
+            border-radius: 50px;
+            border: 1px solid var(--border-color);
+            background: transparent;
+            color: white;
+            font-size: 14px;
+        }
+        .footer-subscribe input::placeholder { color: var(--text-muted); }
+        .footer-contact { margin-top: 30px; }
+        .footer-contact h4 { margin-bottom: 15px; }
+        .contact-item {
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+        .footer-bottom {
+            border-top: none;
+            padding-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+        .footer-bottom-links { display: flex; gap: 30px; }
+        .footer-bottom-links a { color: var(--text-muted); text-decoration: none; transition: 0.3s; }
+        .footer-bottom-links a:hover { color: white; }
+
+        @media (max-width: 992px) {
+            .grid-3, .grid-4, .prod-grid, .test-grid, .footer-grid, .partners-grid { 
+                grid-template-columns: 1fr;
+            }
+            .services-timeline { gap: 40px; }
+            .timeline-center { display: none; }
+            .service-item { grid-template-columns: 1fr; }
+            .timeline-dot { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<body>
+
+<body>
+
+    <!-- === NAVIGATION + HERO === -->
+    <section class="hero">
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="#">Tutorials</a></li>
+                <li><a href="#">Blogs</a></li>
+                <li><a href="#">Careers</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="container" style="margin-top: 80px;">
+            <h1>AI for a Smarter Tomorrow</h1>
+            <p>Cerevyn Solutions harnesses cutting-edge artificial intelligence to revolutionize industries, enrich lives, and create intelligent solutions for healthcare, education, business operations, aerial services, and advanced surveying worldwide.</p>
+            <div class="btn-group">
+                <a href="services.html" class="btn btn-blue">Explore Services</a>
+                <a href="#" class="btn btn-white">Get in touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- === WHY CHOOSE === -->
+    <section class="why-section">
+        <div class="container">
+            <h2>Why Choose Cerevyn AI?</h2>
+            <p>We combine cutting-edge technology with deep industry expertise to deliver transformative solutions</p>
+            <div class="grid-3">
+                <div class="why-card">
+                    <i class="fas fa-globe"></i>
+                    <h3>Global Reach</h3>
+                    <p>Serving international clients with cutting-edge AI solutions</p>
+                </div>
+                <div class="why-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Innovation First</h3>
+                    <p>Leading with research-backed, future-ready technology</p>
+                </div>
+                <div class="why-card">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Rapid Deployment</h3>
+                    <p>Quick implementation with minimal operational disruption</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === SERVICES === -->
+    <section class="services">
+        <div class="container">
+            <div class="services-header-top">
+                <div class="services-header-left">
+                    <span>— Our Services</span>
+                    <h2>Transforming Industries with AI</h2>
+                </div>
+                <div class="services-header-right">
+                    <p>From healthcare diagnostics to AI-powered drones and advanced surveying, we develop intelligent solutions that drive innovation</p>
+                    <button class="btn btn-white">View All Services</button>
+                </div>
+            </div>
+
+            <div class="services-timeline">
+                <div class="timeline-line"></div>
+
+                <!-- Service 1 -->
+                <div class="service-item">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1620712014215-c8ee4a2b7d46?w=600" alt="AI/ML">
+                    </div>
+                    <div class="timeline-dot">→</div>
+                    <div class="service-content">
+                        <div class="service-icon">⚙️</div>
+                        <h3>Custom AI/ML Model Development</h3>
+                        <p>End-to-end development of machine learning and deep learning models for business intelligence.</p>
+                        <div class="service-tags">
+                            <span class="service-tag">Classification & Regression</span>
+                            <span class="service-tag">Time-Series Analytics</span>
+                            <span class="service-tag">Explainable AI</span>
+                            <span class="service-tag">Reinforcement Learning</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="service-item">
+                    <div class="service-content">
+                        <div class="service-icon">📱</div>
+                        <h3>AI-Enabled Mobile & Web Apps</h3>
+                        <p>Intelligent apps that scale with enterprise needs, featuring conversational interfaces and recommendation engines.</p>
+                        <div class="service-tags">
+                            <span class="service-tag">Voice & Text Interfaces</span>
+                            <span class="service-tag">Recommendation Engines</span>
+                            <span class="service-tag">Personalization AI</span>
+                            <span class="service-tag">Cross-Platform</span>
+                        </div>
+                    </div>
+                    <div class="timeline-dot">←</div>
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600" alt="Web App">
+                    </div>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="service-item">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1677442d019cecf8fbf5d1b51591f0caf97ea89e5?w=600" alt="Agentic AI">
+                    </div>
+                    <div class="timeline-dot">→</div>
+                    <div class="service-content">
+                        <div class="service-icon">🌱</div>
+                        <h3>Agentic AI Solutions</h3>
+                        <p>Built for scalable workflows, intelligent decision-making, and multi-step automation across enterprise environments.</p>
+                        <div class="service-tags">
+                            <span class="service-tag">AI Agents</span>
+                            <span class="service-tag">Workflow Automation</span>
+                            <span class="service-tag">Multi-Agent Systems</span>
+                            <span class="service-tag">Decision Intelligence</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === PRODUCTS === -->
+    <section class="products">
+        <div class="container">
+            <div class="products-header">
+                <div class="products-header-left">
+                    <span>— Our Products</span>
+                    <h2>Featured AI<br>Products</h2>
+                </div>
+                <div class="products-header-right">
+                    <p>Enterprise-grade AI solutions designed for scalability, security, and transformative impact</p>
+                    <button class="btn btn-white">View All Products</button>
+                </div>
+            </div>
+
+            <div class="prod-grid">
+                <div class="prod-card">
+                    <div class="prod-img">
+                        <img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?w=600" alt="ADHD">
+                    </div>
+                    <div class="prod-body">
+                        <h4>AI-Powered ADHD Early Identification</h4>
+                        <p>End-to-end development of machine learning and deep learning models for business intelligence.</p>
+                        <div class="prod-tags">
+                            <span class="prod-tag">Early Detection</span>
+                            <span class="prod-tag">Behavioral Analysis</span>
+                        </div>
+                        <a href="#" class="prod-link">Explore Product →</a>
+                    </div>
+                </div>
+
+                <div class="prod-card">
+                    <div class="prod-img">
+                        <img src="https://images.unsplash.com/photo-1531746790731-6c087fecd05a?w=600" alt="Cerevakyanet">
+                    </div>
+                    <div class="prod-body">
+                        <h4>Cerevakyanet (Text-to-Text)</h4>
+                        <p>Advanced AI text generation and transformation platform for content creation, summarization, and language processing.</p>
+                        <div class="prod-tags">
+                            <span class="prod-tag">Advanced NLP</span>
+                            <span class="prod-tag">Content Generation</span>
+                            <span class="prod-tag">Text Summarization</span>
+                        </div>
+                        <a href="#" class="prod-link">Explore Product →</a>
+                    </div>
+                </div>
+
+                <div class="prod-card">
+                    <div class="prod-img">
+                        <img src="https://images.unsplash.com/photo-1508614589041-895b88991e3e?w=600" alt="Drones">
+                    </div>
+                    <div class="prod-body">
+                        <h4>Aerial Drones & Surveillance</h4>
+                        <p>AI-powered drone solutions for aerial photography, videography, and intelligent surveillance with real-time analytics.</p>
+                        <div class="prod-tags">
+                            <span class="prod-tag">Aerial Cinematography</span>
+                            <span class="prod-tag">Real-time Analytics</span>
+                        </div>
+                        <a href="#" class="prod-link">Explore Product →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === PRINCIPLES === -->
+    <section class="principles">
+        <div class="container">
+            <span>— Our Values</span>
+            <h2>Our Core Principles</h2>
+            <span>The principles that guide our innovation and shape every solution we create</span>
+            <div class="grid-4">
+                <div class="principle-card">
+                    <i class="fas fa-brain"></i>
+                    <h4>Intelligence</h4>
+                    <p>Adaptive AI systems that learn and evolve for smarter solutions</p>
+                </div>
+                <div class="principle-card">
+                    <i class="fas fa-crosshairs"></i>
+                    <h4>Precision</h4>
+                    <p>Data-driven accuracy in every solution delivered with excellence</p>
+                </div>
+                <div class="principle-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h4>Reliability</h4>
+                    <p>Enterprise-grade solutions built for performance and security</p>
+                </div>
+                <div class="principle-card">
+                    <i class="fas fa-lightbulb"></i>
+                    <h4>Innovation</h4>
+                    <p>Pushing boundaries to create tomorrow's possibilities today</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === PARTNERS === -->
+    <section class="partners">
+        <div class="container">
+            <span>— Our Clients</span>
+            <h2>Trusted by Industry Leaders</h2>
+            <span>Partners who trust our AI solutions across diverse industries</span>
+            <div class="partners-grid" style="margin-top: 50px;">
+                <div class="partner-logo">
+                    <img src="https://via.placeholder.com/200x100/FFD700/000080?text=Partner1" alt="Partner">
+                </div>
+                <div class="partner-logo">
+                    <img src="https://via.placeholder.com/200x100/20B2AA/000080?text=Partner2" alt="Partner">
+                </div>
+                <div class="partner-logo">
+                    <img src="https://via.placeholder.com/200x100/FFD700/000080?text=Partner3" alt="Partner">
+                </div>
+                <div class="partner-logo">
+                    <img src="https://via.placeholder.com/200x100/4169E1/000080?text=Partner4" alt="Partner">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === TESTIMONIALS === -->
+    <section class="testimonials">
+        <div class="container">
+            <span>— Testimonials</span>
+            <h2>Client Success Stories</h2>
+            <span>What industry leaders say about our AI solutions</span>
+            <div class="test-grid" style="margin-top: 60px;">
+                <div class="test-card">
+                    <div class="test-pfp"></div>
+                    <div class="test-content">
+                        <h4>Dr. Sarah Chen</h4>
+                        <div class="test-role">Chief Medical Officer, BioFactor</div>
+                        <p class="test-quote">Cerevyn's AI healthcare solutions reduced our diagnostic time by 70%. Their team's expertise is exceptional. Verified Client Success Story</p>
+                        <div class="stars">★★★★★</div>
+                    </div>
+                </div>
+                <div class="test-card">
+                    <div class="test-pfp"></div>
+                    <div class="test-content">
+                        <h4>Dr. Sarah Chen</h4>
+                        <div class="test-role">Chief Medical Officer, BioFactor</div>
+                        <p class="test-quote">Cerevyn's AI healthcare solutions reduced our diagnostic time by 70%. Their team's expertise is exceptional. Verified Client Success Story</p>
+                        <div class="stars">★★★★★</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === CTA SECTION === -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Transform Your Business?</h2>
+            <p>Partner with Cerevyn to leverage cutting-edge AI solutions including drones, surveying, and automation that drive innovation and create competitive advantages in your industry.</p>
+            <div class="btn-group">
+                <button class="btn btn-white">Start Your AI Journey</button>
+                <button class="btn" style="background: transparent; border: 2px solid white; color: white;">Learn About Us</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- === FOOTER === -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo-box"></div>
+                    <p>A global AI company transforming healthcare, education, and business operations with intelligent solutions designed for a smarter, more connected tomorrow.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li>Home</li>
+                        <li>About Us</li>
+                        <li>Services</li>
+                        <li>Mission & Vision</li>
+                        <li>Careers</li>
+                        <li>Tutorials</li>
+                        <li>Blog</li>
+                        <li>Contact</li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Our Services</h4>
+                    <ul>
+                        <li>AI Healthcare Solutions</li>
+                        <li>AI Education Platforms</li>
+                        <li>AI Development Services</li>
+                        <li>AI Automation Systems</li>
+                        <li>Agentic AI Solutions</li>
+                        <li>Entity Management Portal</li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <p>Subscribe to our newsletter for AI insights and updates.</p>
+                    <form class="footer-subscribe">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit" class="btn btn-blue" style="width: 100%;">Subscribe</button>
+                    </form>
+                    <div class="footer-contact">
+                        <h4>Contact Us</h4>
+                        <div class="contact-item">
+                            <strong>Email Us:</strong> info@cerevyn.com
+                        </div>
+                        <div class="contact-item">
+                            <strong>Call Us:</strong> +91 78935 25665
+                        </div>
+                        <div class="contact-item">
+                            <strong>Our Headquarters:</strong> T-Hub, Hyderabad Knowledge City, Serilingampally, Hyderabad, Telangana 500081, India
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <span>© 2026 Cerevyn Solutions Pvt Ltd. All rights reserved.</span>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                    <a href="#">Sitemap</a>
+                    <a href="#">Made with passion in India</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
