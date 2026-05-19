@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Tutorials & Learning Hub | Cerevyn</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-dark: #05070a;
+            --accent-blue: #0062ff;
+            --card-white: #ffffff;
+            --text-gray: #94a3b8;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { background-color: var(--bg-dark); color: #ffffff; overflow-x: hidden; }
+
+        /* --- NAVIGATION --- */
+        header { position: fixed; top: 25px; left: 0; right: 0; z-index: 1000; display: flex; justify-content: center; }
+        .nav-pill {
+            background: rgba(15, 15, 15, 0.85); backdrop-filter: blur(12px);
+            padding: 10px 35px; border-radius: 50px; border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex; gap: 24px; align-items: center;
+        }
+        .nav-pill a { color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 13px; font-weight: 500; }
+        .nav-pill a.active { color: #fff; }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 70vh; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; text-align: center;
+            background: radial-gradient(circle at center, #0a192f 0%, #05070a 100%);
+            padding-top: 100px;
+        }
+        .hero h1 { font-size: 46px; font-weight: 800; margin-bottom: 12px; }
+        .hero p { color: var(--text-gray); max-width: 750px; font-size: 15px; margin-bottom: 35px; }
+
+        /* --- SEARCH & FILTER DOCK --- */
+        .search-container { width: 90%; max-width: 850px; position: relative; }
+        .search-container input {
+            width: 100%; background: #fff; border: none; border-radius: 50px;
+            padding: 18px 25px 18px 55px; font-size: 15px; color: #333;
+        }
+        .search-container i { position: absolute; left: 22px; top: 50%; transform: translateY(-50%); color: #94a3b8; }
+
+        .filter-dock {
+            display: flex; gap: 20px; margin-top: 35px; background: #0c0f16;
+            padding: 12px 25px; border-radius: 10px; border: 1px solid #1a1e26;
+        }
+        .filter-dock div { font-size: 12px; font-weight: 600; color: #6b7280; cursor: pointer; display: flex; align-items: center; gap: 8px; }
+        .filter-dock div.active { color: #fff; }
+
+        /* --- TUTORIAL GRID (9 BOXES) --- */
+        .content-area { width: 92%; max-width: 1200px; margin: 60px auto; }
+        .tutorial-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
+
+        .card { background: var(--card-white); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; transition: 0.3s; }
+        .card:hover { transform: translateY(-5px); }
+        
+        .thumb { height: 190px; position: relative; background: #000; }
+        .thumb img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; }
+        .play-btn {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 45px; height: 45px; background: rgba(255,255,255,0.2); border: 2px solid #fff;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff;
+        }
+
+        .card-content { padding: 22px; flex-grow: 1; color: #111; }
+        .meta-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+        .tag { background: #eff6ff; color: var(--accent-blue); font-size: 10px; font-weight: 700; padding: 4px 10px; border-radius: 4px; }
+        .stats { display: flex; align-items: center; gap: 10px; color: #9ca3af; font-size: 11px; }
+
+        .card-content h3 { font-size: 18px; font-weight: 800; margin-bottom: 10px; line-height: 1.3; }
+        .card-content p { font-size: 12.5px; color: #6b7280; margin-bottom: 20px; }
+        
+        .btn-action {
+            width: 100%; padding: 12px; border-radius: 6px; font-weight: 700; font-size: 13px;
+            text-align: center; text-decoration: none; display: block;
+        }
+        .btn-watch { background: #1e293b; color: #fff; }
+        .btn-locked { background: #f3f4f6; color: #9ca3af; cursor: not-allowed; }
+
+        /* --- BLUE CTA SECTION --- */
+        .blue-cta { background: var(--accent-blue); padding: 90px 20px; text-align: center; }
+        .blue-cta h2 { font-size: 38px; font-weight: 800; margin-bottom: 15px; }
+        .blue-cta p { max-width: 800px; margin: 0 auto 40px; opacity: 0.9; }
+        .cta-buttons { display: flex; justify-content: center; gap: 15px; }
+        .pill { padding: 14px 28px; border-radius: 50px; font-weight: 700; text-decoration: none; display: flex; align-items: center; gap: 10px; }
+        .pill-white { background: #fff; color: var(--accent-blue); }
+        .pill-outline { border: 2px solid #fff; color: #fff; }
+
+        /* --- FOOTER (EXACT FIGMA) --- */
+        footer { background: #041939; padding: 80px 8% 40px; border-top: 1px solid #111827; }
+        .f-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.5fr; gap: 50px; margin-bottom: 50px; }
+        
+        .logo-placeholder { width: 220px; height: 100px; background: #fff; border-radius: 4px; margin-bottom: 25px; }
+        
+        .f-col h4 { font-size: 15px; font-weight: 700; margin-bottom: 25px; }
+        .f-col p, .f-col li { color: var(--text-gray); font-size: 13px; list-style: none; margin-bottom: 12px; }
+        
+        .socials { display: flex; gap: 15px; margin-top: 20px; }
+        .socials i { color: var(--text-gray); cursor: pointer; }
+
+        .subscribe-box input { width: 100%; padding: 12px; border-radius: 6px; border: none; margin-bottom: 10px; }
+        .subscribe-box button { width: 100%; padding: 10px; background: var(--accent-blue); color: #fff; border: none; border-radius: 4px; font-weight: 700; }
+
+        @media (max-width: 1000px) { .tutorial-grid, .f-grid { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 650px) { .tutorial-grid, .f-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div style="display: flex; justify-content: flex-end; margin-bottom: 100px;">
+                <nav class="nav-pill">
+                    <a href="index.html">Home</a>
+                    <a href="services.html">Services</a>
+                    <a href="products.html">Products</a>
+                    <a href="Tutorials.html">Tutorials</a>
+                    <a href="Blog.html">Blog</a>
+                    <a href="careers.html">Careers</a>
+                    <a href="about.html">About</a>
+                    <a href="contact.html">Contact</a>
+                </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>AI Tutorials & Learning Hub</h1>
+        <p>Master artificial intelligence with our comprehensive tutorials, practical guides, and expert-led courses designed for all skill levels.</p>
+        
+        <div class="search-container">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search tutorials...">
+        </div>
+
+        <div class="filter-dock">
+            <div class="active"><i class="fas fa-rocket"></i> All</div>
+            <div><i class="fas fa-heart"></i> Healthcare</div>
+            <div><i class="fas fa-graduation-cap"></i> Education</div>
+            <div><i class="fas fa-cog"></i> Automation</div>
+            <div><i class="fas fa-robot"></i> AI Agents</div>
+            <div><i class="fas fa-code"></i> Development</div>
+            <div><i class="fas fa-chart-line"></i> Business</div>
+            <div><i class="fas fa-globe"></i> General</div>
+        </div>
+    </section>
+
+    <div class="content-area">
+        <div class="tutorial-grid">
+            <div class="card">
+                <div class="thumb"><img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=500"><div class="play-btn"><i class="fas fa-play"></i></div></div>
+                <div class="card-content">
+                    <div class="meta-row"><span class="tag">Healthcare</span><div class="stats"><span><i class="far fa-clock"></i> 45min</span><span><i class="far fa-chart-bar"></i> Beginner</span><i class="fas fa-info-circle"></i></div></div>
+                    <h3>Getting Started with AI in Healthcare</h3>
+                    <p>Learn how to implement AI-powered diagnostics and patient monitoring systems.</p>
+                    <a href="#" class="btn-action btn-watch">Watch Now</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="thumb"><img src="https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=500"><div class="play-btn"><i class="fas fa-lock"></i></div></div>
+                <div class="card-content">
+                    <div class="meta-row"><span class="tag">Education</span><div class="stats"><span><i class="far fa-clock"></i> 45min</span><span><i class="far fa-chart-bar"></i> Beginner</span><i class="fas fa-info-circle"></i></div></div>
+                    <h3>Building Educational AI Platforms</h3>
+                    <p>Comprehensive guide to adaptive learning systems using AI and ML.</p>
+                    <a href="#" class="btn-action btn-locked">Coming Soon</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="thumb"><img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=500"><div class="play-btn"><i class="fas fa-play"></i></div></div>
+                <div class="card-content">
+                    <div class="meta-row"><span class="tag">Automation</span><div class="stats"><span><i class="far fa-clock"></i> 45min</span><span><i class="far fa-chart-bar"></i> Beginner</span><i class="fas fa-info-circle"></i></div></div>
+                    <h3>AI Automation for Business Operations</h3>
+                    <p>Discover how to automate repetitive tasks and optimize workflows.</p>
+                    <a href="#" class="btn-action btn-watch">Watch Now</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="thumb"><img src="https://images.unsplash.com/photo-1531746790731-6c087fecd05a?w=500"><div class="play-btn"><i class="fas fa-play"></i></div></div>
+                <div class="card-content">
+                    <div class="meta-row"><span class="tag">AI Agents</span><div class="stats"><span><i class="far fa-clock"></i> 45min</span><span><i class="far fa-chart-bar"></i> Beginner</span><i class="fas fa-info-circle"></i></div></div>
+                    <h3>Developing Conversational AI Agents</h3>
+                    <p>Master the art of creating intelligent chatbots and voice assistants.</p>
+                    <a href="#" class="btn-action btn-watch">Watch Now</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="thumb"><img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=500"><div class="play-btn"><i class="fas fa-lock"></i></div></div>
+                <div class="card-content">
+                    <div class="meta-row"><span class="tag">Development</span><div class="stats"><span><i class="far fa-clock"></i> 45min</span><span><i class="far fa-chart-bar"></i> Beginner</span><i class="fas fa-info-circle"></i></div></div>
+                    <h3>Machine Learning Best Practices</h3>
+                    <p>Essential strategies for implementing robust ML models in production.</p>
+                    <a href="#" class="btn-action btn-locked">Coming Soon</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="thumb"><img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=500"><div class="play-btn"><i class="fas fa-play"></i></div></div>
+                <div class="card-content">
+                    <div class="meta-row"><span class="tag">General</span><div class="stats"><span><i class="far fa-clock"></i> 45min</span><span><i class="far fa-chart-bar"></i> Beginner</span><i class="fas fa-info-circle"></i></div></div>
+                    <h3>AI Ethics and Responsible Dev</h3>
+                    <p>Understanding ethical considerations for responsible AI solutions.</p>
+                    <a href="#" class="btn-action btn-watch">Watch Now</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="thumb"><img src="https://images.unsplash.com/photo-1527430253228-e90324838a81?w=500"><div class="play-btn"><i class="fas fa-play"></i></div></div>
+                <div class="card-content">
+                    <div class="meta-row"><span class="tag">Automation</span><div class="stats"><span><i class="far fa-clock"></i> 45min</span><span><i class="far fa-chart-bar"></i> Beginner</span><i class="fas fa-info-circle"></i></div></div>
+                    <h3>Computer Vision Fundamentals</h3>
+                    <p>Master image recognition and object detection with practical examples.</p>
+                    <a href="#" class="btn-action btn-watch">Watch Now</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="thumb"><img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=500"><div class="play-btn"><i class="fas fa-lock"></i></div></div>
+                <div class="card-content">
+                    <div class="meta-row"><span class="tag">Development</span><div class="stats"><span><i class="far fa-clock"></i> 45min</span><span><i class="far fa-chart-bar"></i> Beginner</span><i class="fas fa-info-circle"></i></div></div>
+                    <h3>Natural Language Processing Basics</h3>
+                    <p>Fundamentals of NLP including text classification and sentiment analysis.</p>
+                    <a href="#" class="btn-action btn-locked">Coming Soon</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="thumb"><img src="https://images.unsplash.com/photo-1611974714013-3c8c0d088bd3?w=500"><div class="play-btn"><i class="fas fa-play"></i></div></div>
+                <div class="card-content">
+                    <div class="meta-row"><span class="tag">Business</span><div class="stats"><span><i class="far fa-clock"></i> 45min</span><span><i class="far fa-chart-bar"></i> Beginner</span><i class="fas fa-info-circle"></i></div></div>
+                    <h3>AI in Finance: Predictive Analytics</h3>
+                    <p>Explore AI applications in finance for risk and market predictions.</p>
+                    <a href="#" class="btn-action btn-watch">Watch Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="blue-cta">
+        <h2>Ready to Master AI?</h2>
+        <p>Join thousands of developers, engineers, and Al enthusiasts who are transforming their careers with our comprehensive Al tutorials and hands-on learning experiences.</p>
+        <div class="cta-buttons">
+            <a href="#" class="pill pill-white"><i class="fas fa-book-open"></i> Get Learning Path</a>
+            <a href="#" class="pill pill-outline"><i class="fas fa-download"></i> Download Syllabus</a>
+        </div>
+    </section>
+
+    <!-- FIGMA-MATCHED FOOTER -->
+    <footer style="background-color: #041670; padding: 100px 0 40px 0; color: white; border-top: 1px solid rgba(255,255,255,0.05); font-family: 'Plus Jakarta Sans', sans-serif;">
+        <div style="width: 90%; max-width: 1150px; margin: auto;">
+            <div style="display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.5fr; gap: 50px; margin-bottom: 80px;">
+                
+                <!-- Branding & Social -->
+                <div>
+                    <div style="background: #e2e8f0; width: 180px; height: 50px; margin-bottom: 25px; border-radius: 4px;"></div> <!-- Logo Placeholder -->
+                    <p style="font-size: 14px; color: #94a3b8; line-height: 1.7; margin-bottom: 25px;">
+                        A global AI company transforming healthcare, education, and business operations with intelligent solutions designed for a smarter, more connected tomorrow.
+                    </p>
+                    <div style="display: flex; gap: 15px;">
+                        <i class="fab fa-facebook" style="color: #94a3b8; font-size: 18px; cursor: pointer;"></i>
+                        <i class="fab fa-twitter" style="color: #94a3b8; font-size: 18px; cursor: pointer;"></i>
+                        <i class="fab fa-linkedin" style="color: #94a3b8; font-size: 18px; cursor: pointer;"></i>
+                        <i class="fab fa-instagram" style="color: #94a3b8; font-size: 18px; cursor: pointer;"></i>
+                        <i class="fab fa-youtube" style="color: #94a3b8; font-size: 18px; cursor: pointer;"></i>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 style="font-size: 16px; font-weight: 700; margin-bottom: 25px;">Quick Links</h4>
+                    <ul style="list-style: none; padding: 0; color: #94a3b8; font-size: 14px; line-height: 2.2;">
+                        <li>• Home</li>
+                        <li>• About Us</li>
+                        <li>• Services</li>
+                        <li>• Mission & Vision</li>
+                        <li>• Careers</li>
+                        <li>• Tutorials</li>
+                        <li>• Blog</li>
+                        <li>• Contact</li>
+                    </ul>
+                </div>
+
+                <!-- Our Services -->
+                <div>
+                    <h4 style="font-size: 16px; font-weight: 700; margin-bottom: 25px;">Our Services</h4>
+                    <ul style="list-style: none; padding: 0; color: #94a3b8; font-size: 14px; line-height: 2.2;">
+                        <li>• AI Healthcare Solutions</li>
+                        <li>• AI Education Platforms</li>
+                        <li>• AI Development Services</li>
+                        <li>• AI Automation Systems</li>
+                        <li>• Agentic AI Solutions</li>
+                        <li>• Entity Management Portal</li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter & Contact -->
+                <div>
+                    <p style="font-size: 14px; color: #f8fafc; margin-bottom: 15px; font-weight: 500;">Subscribe to our newsletter for AI insights and updates.</p>
+                    <input type="text" placeholder="Your email address" style="width: 100%; padding: 12px 15px; border-radius: 8px; border: none; background: white; margin-bottom: 10px; font-size: 13px;">
+                    <button style="width: 100%; background: #007bff; color: white; padding: 12px; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; margin-bottom: 30px;">Subscribe</button>
+                    
+                    <h4 style="font-size: 16px; font-weight: 700; margin-bottom: 15px;">Contact Us</h4>
+                    <p style="font-size: 13px; color: #94a3b8; margin-bottom: 8px;"><strong>Email Us:</strong> info@cerevyn.com</p>
+                    <p style="font-size: 13px; color: #94a3b8; margin-bottom: 15px;"><strong>Call Us:</strong> +91 78935 25665</p>
+                    <p style="font-size: 12px; color: #64748b; line-height: 1.5;">
+                        Our Headquarters:<br>
+                        T-Hub, Hyderabad Knowledge City, Serilingampally, Hyderabad, Telangana 500081, India
+                    </p>
+                </div>
+            </div>
+
+            <!-- Bottom Copyright Bar -->
+            <div style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 30px; display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: #64748b;">
+                <div>© 2026 Cerevyn Solutions Pvt Ltd. All rights reserved.</div>
+                <div style="display: flex; gap: 20px;">
+                    <span>Privacy Policy</span>
+                    <span>Terms of Service</span>
+                    <span>Cookie Policy</span>
+                    <span>Sitemap</span>
+                    <span style="color: white;">Made with passion in India</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function filterData(category, element) {
+            // Update active state of filter boxes
+            document.querySelectorAll('.filter-card').forEach(card => card.classList.remove('active'));
+            element.classList.add('active');
+
+            // Simplified filtering: show/hide based on category match
+            const cards = document.querySelectorAll('.s-item');
+            
+            cards.forEach(card => {
+                // If category is 'all' or the card has the category class, show it
+                if (category === 'all' || card.classList.contains(category)) {
+                    card.classList.add('show');
+                } else {
+                    card.classList.remove('show');
+                }
+            });
+        }
+
+        // Initialize by showing all
+        document.addEventListener('DOMContentLoaded', function() {
+            filterData('all', document.querySelector('.filter-card.active'));
+        });
+    </script>
+</body>
+</html>
