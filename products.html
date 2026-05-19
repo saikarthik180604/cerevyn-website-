@@ -91,8 +91,16 @@
         .product-search span { color: #94a3b8; margin-right: 12px; font-size: 16px; }
         .product-search input { border: none; outline: none; width: 100%; font-size: 14px; color: #64748b; background: transparent; }
         .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
+        .filtered-products { display: grid; grid-template-columns: repeat(3, minmax(320px, 1fr)); gap: 30px; width: 100%; max-width: 1180px; margin: 40px auto 0; }
+        .filtered-products > .product-item { width: 100%; max-width: none; margin: 0; }
         .product-card { background: white; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; transition: 0.3s ease; }
         .product-card:hover { transform: translateY(-5px); }
+        @media (max-width: 1120px) {
+            .filtered-products { grid-template-columns: repeat(2, minmax(320px, 1fr)); }
+        }
+        @media (max-width: 720px) {
+            .filtered-products { grid-template-columns: 1fr; }
+        }
         .product-card img { width: 100%; height: 180px; object-fit: cover; }
         .info-box { padding: 20px; display: flex; flex-direction: column; flex-grow: 1; }
         .info-box h3 { font-size: 17px; color: #0f172a; margin-bottom: 10px; font-weight: 700; }
@@ -176,8 +184,9 @@
                     <a href="index.html">Home</a>
                     <a href="services.html">Services</a>
                     <a href="products.html" class="active">Products</a>
-                    <a href="#">Resources ⌵</a>
-                    <a href="#">Careers</a>
+                    <a href="Tutorials.html">Tutorials</a>
+                    <a href="Blogs.html">Blogs</a>
+                    <a href="careers.html">Careers</a>
                     <a href="#">About</a>
                     <a href="#">Contact</a>
                 </nav>
@@ -213,6 +222,8 @@
                 <input type="text" placeholder="Search products...">
             </div>
 
+            <div id="filteredProducts" class="filtered-products" style="display: none;"></div>
+
         </div>
     </section>
 
@@ -228,19 +239,19 @@
                     <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500" alt="">
                     <div class="product-info">
                         <h3>Cerevakyanet (Text-to-Text)</h3>
-                        <p>Advanced AI text generation and transformation platform for content creation and summarization.</p>
-                        <div class="tag-group"><span class="tag">Advanced NLP</span><span class="tag">Content Generation</span></div>
+                        <p>Advanced AI text generation and transformation platform for content creation, summarization, and language processing.</p>
+                        <div class="tag-group"><span class="tag">Advanced NLP</span><span class="tag">Content Generation</span><span class="tag">Text Summarization</span><span class="tag">Multi-language Support</span></div>
                         <a href="#" class="explore-link">Explore Product →</a>
                     </div>
                 </div>
 
-                <!-- Caption Craft AI (Creative & Media) -->
-                <div class="product-item" data-category="creative-media">
+                <!-- Caption Craft AI (AI & Technology) -->
+                <div class="product-item" data-category="ai-technology">
                     <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?w=500" alt="">
                     <div class="product-info">
                         <h3>Caption Craft AI (Subtitle)</h3>
-                        <p>Intelligent subtitle and caption generation platform with automatic synchronization.</p>
-                        <div class="tag-group"><span class="tag">Auto-sync</span><span class="tag">Multi-language</span></div>
+                        <p>Intelligent subtitle and caption generation platform with automatic synchronization and multi-lingual support.</p>
+                        <div class="tag-group"><span class="tag">Auto-sync Subtitles</span><span class="tag">Multi-language</span><span class="tag">Real-time Processing</span><span class="tag">Custom Styling</span></div>
                         <a href="#" class="explore-link">Explore Product →</a>
                     </div>
                 </div>
@@ -251,7 +262,7 @@
                     <div class="product-info">
                         <h3>Cerevak (Voice AI)</h3>
                         <p>State-of-the-art voice AI platform for speech synthesis, voice cloning, and natural voice interactions.</p>
-                        <div class="tag-group"><span class="tag">Voice Cloning</span><span class="tag">Speech Synthesis</span></div>
+                        <div class="tag-group"><span class="tag">Voice Cloning</span><span class="tag">Speech Synthesis</span><span class="tag">Real-time Processing</span><span class="tag">Multiple Languages</span></div>
                         <a href="#" class="explore-link">Explore Product →</a>
                     </div>
                 </div>
@@ -262,18 +273,18 @@
                     <div class="product-info">
                         <h3>AI-Powered ADHD Early Identification</h3>
                         <p>Revolutionary pediatric innovation detecting early ADHD signs from 9 months using computer vision and behavioral AI analysis.</p>
-                        <div class="tag-group"><span class="tag">Early Detection</span><span class="tag">Clinical Integration</span></div>
+                        <div class="tag-group"><span class="tag">Early Detection (9+ months)</span><span class="tag">Clinical Integration</span><span class="tag">Behavioral Pattern Analysis</span><span class="tag">Real-time Monitoring</span></div>
                         <a href="#" class="explore-link">Explore Product →</a>
                     </div>
                 </div>
 
-                <!-- Cultural Learning AI Toy (Creative & Media) -->
-                <div class="product-item" data-category="creative-media">
+                <!-- Cultural Learning AI Toy (AI & Technology) -->
+                <div class="product-item" data-category="ai-technology">
                     <img src="https://images.unsplash.com/photo-1531497865144-0464ef8fb9a9?w=500" alt="">
                     <div class="product-info">
                         <h3>Cultural Learning AI Toy</h3>
-                        <p>Interactive AI-powered educational toy with voice cloning, 3D visualization, and multi-language storytelling.</p>
-                        <div class="tag-group"><span class="tag">Voice Cloning</span><span class="tag">3D Visualization</span></div>
+                        <p>Interactive AI-powered educational toy with voice cloning, 3D visualization, and multi-language storytelling for immersive cultural learning.</p>
+                        <div class="tag-group"><span class="tag">Voice Cloning Technology</span><span class="tag">3D Visualization</span><span class="tag">Multi-language Support</span><span class="tag">Interactive Storytelling</span></div>
                         <a href="#" class="explore-link">Explore Product →</a>
                     </div>
                 </div>
@@ -284,7 +295,7 @@
                     <div class="product-info">
                         <h3>Healthcare AI Diagnostics</h3>
                         <p>Advanced AI systems for early disease detection, patient monitoring, and personalized treatment recommendations.</p>
-                        <div class="tag-group"><span class="tag">Medical Imaging</span><span class="tag">Predictive Analytics</span></div>
+                        <div class="tag-group"><span class="tag">Medical Imaging Analysis</span><span class="tag">Predictive Health Analytics</span><span class="tag">Autonomous Navigation</span><span class="tag">Clinical Decision Support</span></div>
                         <a href="#" class="explore-link">Explore Product →</a>
                     </div>
                 </div>
@@ -295,35 +306,35 @@
                     <div class="product-info">
                         <h3>Conversational AI Agents</h3>
                         <p>Intelligent virtual assistants and chatbots for enhanced customer engagement and 24/7 support automation.</p>
-                        <div class="tag-group"><span class="tag">24/7 Support</span><span class="tag">NLP</span></div>
+                        <div class="tag-group"><span class="tag">24/7 Support</span><span class="tag">Multi-language NLP</span><span class="tag">Personalized Responses</span></div>
                         <a href="#" class="explore-link">Explore Product →</a>
                     </div>
                 </div>
 
                 <!-- Enterprise Business Systems (Systems & Web) -->
                 <div class="product-item" data-category="systems-web">
-                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500" alt="">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500" alt="Enterprise Business Systems">
                     <div class="product-info">
                         <h3>Enterprise Business Systems</h3>
                         <p>Comprehensive digital platforms for business entity management across global jurisdictions.</p>
-                        <div class="tag-group"><span class="tag">Compliance</span><span class="tag">Global Management</span></div>
+                        <div class="tag-group"><span class="tag">Global Compliance</span><span class="tag">Lifecycle Management</span><span class="tag">Real-time Analytics</span><span class="tag">API Integration</span></div>
                         <a href="#" class="explore-link">Explore Product →</a>
                     </div>
                 </div>
 
-                <!-- Intelligent Learning Systems (AI & Technology) -->
-                <div class="product-item" data-category="ai-technology">
-                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=500" alt="">
+                <!-- Intelligent Learning Systems (Systems & Web) -->
+                <div class="product-item" data-category="systems-web">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=500" alt="Intelligent Learning Systems">
                     <div class="product-info">
                         <h3>Intelligent Learning Systems</h3>
                         <p>Adaptive educational platforms with AI-driven personalization and interactive learning experiences.</p>
-                        <div class="tag-group"><span class="tag">Adaptive Learning</span><span class="tag">Personalization</span></div>
+                        <div class="tag-group"><span class="tag">Adaptive Learning Paths</span><span class="tag">Progress Analytics</span><span class="tag">Interactive Content</span><span class="tag">Gamified Modules</span></div>
                         <a href="#" class="explore-link">Explore Product →</a>
                     </div>
                 </div>
 
-                <!-- Aerial Drones & Surveillance (AI & Technology) -->
-                <div class="product-item" data-category="ai-technology">
+                <!-- Aerial Drones & Surveillance (Creative & Media) -->
+                <div class="product-item" data-category="creative-media">
                     <img src="https://images.unsplash.com/photo-1508614589041-895b88991e3e?w=500" alt="">
                     <div class="product-info">
                         <h3>Aerial Drones & Surveillance</h3>
@@ -438,59 +449,151 @@
         document.addEventListener('DOMContentLoaded', function() {
             const categoryCards = document.querySelectorAll('.category-card');
             const searchInput = document.querySelector('input[placeholder="Search products..."]');
-            
-            // Category filtering
+            const filteredProducts = document.querySelector('#filteredProducts');
+            const productGrid = document.querySelector('#productGrid');
+            const allProducts = Array.from(document.querySelectorAll('#productGrid .product-item'));
+
+            const aiTechnologyProducts = [
+                {
+                    id: 1,
+                    title: 'Cerevakyanet (Text-to-Text)',
+                    description: 'Advanced AI text generation and transformation platform for content creation, summarization, and language processing.',
+                    tags: ['Advanced NLP', 'Content Generation', 'Text Summarization', 'Multi-language Support'],
+                    image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500'
+                },
+                {
+                    id: 2,
+                    title: 'Caption Craft AI (Subtitle)',
+                    description: 'Intelligent subtitle and caption generation platform with automatic synchronization and multi-lingual support.',
+                    tags: ['Auto-sync Subtitles', 'Multi-language', 'Real-time Processing', 'Custom Styling'],
+                    image: 'https://images.unsplash.com/photo-1485846234645-a62644f84728?w=500'
+                },
+                {
+                    id: 3,
+                    title: 'Cerevak (Voice AI)',
+                    description: 'State-of-the-art voice AI platform for speech synthesis, voice cloning, and natural voice interactions.',
+                    tags: ['Voice Cloning', 'Speech Synthesis', 'Real-time Processing', 'Multiple Languages'],
+                    image: 'https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=500'
+                },
+                {
+                    id: 4,
+                    title: 'AI-Powered ADHD Early Identification',
+                    description: 'Revolutionary pediatric innovation detecting early ADHD signs from 9 months using computer vision and behavioral AI analysis.',
+                    tags: ['Early Detection (9+ months)', 'Clinical Integration', 'Behavioral Pattern Analysis', 'Real-time Monitoring'],
+                    image: 'https://images.unsplash.com/photo-1507413245164-6160d8298b31?w=500'
+                },
+                {
+                    id: 5,
+                    title: 'Cultural Learning AI Toy',
+                    description: 'Interactive AI-powered educational toy with voice cloning, 3D visualization, and multi-language storytelling for immersive cultural learning.',
+                    tags: ['Voice Cloning Technology', '3D Visualization', 'Multi-language Support', 'Interactive Storytelling'],
+                    image: 'https://images.unsplash.com/photo-1531497865144-0464ef8fb9a9?w=500'
+                },
+                {
+                    id: 6,
+                    title: 'Healthcare AI Diagnostics',
+                    description: 'Advanced AI systems for early disease detection, patient monitoring, and personalized treatment recommendations.',
+                    tags: ['Medical Imaging Analysis', 'Predictive Health Analytics', 'Autonomous Navigation', 'Clinical Decision Support'],
+                    image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=500'
+                },
+                {
+                    id: 7,
+                    title: 'Conversational AI Agents',
+                    description: 'Intelligent virtual assistants and chatbots for enhanced customer engagement and 24/7 support automation.',
+                    tags: ['24/7 Support', 'Multi-language NLP', 'Personalized Responses'],
+                    image: 'https://images.unsplash.com/photo-1531746790731-6c087fecd05a?w=500'
+                }
+            ];
+
+            function mapCategoryText(categoryText) {
+                if (categoryText === 'all services') return 'all';
+                if (categoryText === 'ai & technology') return 'ai-technology';
+                if (categoryText === 'systems & web') return 'systems-web';
+                if (categoryText === 'creative & media') return 'creative-media';
+                return '';
+            }
+
+            function renderProductCard(product) {
+                const card = document.createElement('div');
+                card.className = 'product-item';
+                card.style.display = 'flex';
+
+                card.innerHTML = `
+                    <img src="${product.image}" alt="${product.title}">
+                    <div class="product-info">
+                        <h3>${product.title}</h3>
+                        <p>${product.description}</p>
+                        <div class="tag-group">
+                            ${product.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                        </div>
+                        <a href="#" class="explore-link">Explore Product →</a>
+                    </div>
+                `;
+
+                return card;
+            }
+
+            function showFilteredProducts(filterCategory) {
+                filteredProducts.innerHTML = '';
+
+                if (filterCategory === 'all') {
+                    productGrid.style.display = 'grid';
+                    filteredProducts.style.display = 'none';
+                    return;
+                }
+
+                let matchingProducts = [];
+                if (filterCategory === 'ai-technology') {
+                    matchingProducts = aiTechnologyProducts;
+                } else {
+                    matchingProducts = allProducts.filter(product => product.getAttribute('data-category') === filterCategory);
+                }
+
+                if (matchingProducts.length === 0) {
+                    filteredProducts.innerHTML = '<div style="color: white; padding: 24px; border-radius: 24px; background: rgba(255,255,255,0.06);">No products found for this category.</div>';
+                } else {
+                    matchingProducts.forEach(product => {
+                        const card = filterCategory === 'ai-technology' ? renderProductCard(product) : product.cloneNode(true);
+                        filteredProducts.appendChild(card);
+                    });
+                }
+
+                productGrid.style.display = 'none';
+                filteredProducts.style.display = 'grid';
+            }
+
             categoryCards.forEach(card => {
                 card.addEventListener('click', function() {
                     const categoryText = this.querySelector('span').textContent.toLowerCase();
-                    const products = document.querySelectorAll('.product-item');
-                    
-                    // Update active category styling
+                    const filterCategory = mapCategoryText(categoryText);
+
                     categoryCards.forEach(c => c.classList.remove('active'));
                     this.classList.add('active');
-                    
-                    // Map category text to data-category values
-                    let filterCategory = '';
-                    if (categoryText === 'all services') {
-                        filterCategory = 'all';
-                    } else if (categoryText === 'ai & technology') {
-                        filterCategory = 'ai-technology';
-                    } else if (categoryText === 'systems & web') {
-                        filterCategory = 'systems-web';
-                    } else if (categoryText === 'creative & media') {
-                        filterCategory = 'creative-media';
-                    }
-                    
-                    products.forEach(product => {
-                        const productCategory = product.getAttribute('data-category');
-                        if (filterCategory === 'all' || productCategory === filterCategory) {
-                            product.style.display = 'flex';
-                        } else {
-                            product.style.display = 'none';
-                        }
-                    });
+
+                    showFilteredProducts(filterCategory);
                 });
             });
-            
+
+            // Show AI & Technology by default if active class exists on page load
+            const defaultActive = document.querySelector('.category-card.active');
+            if (defaultActive) {
+                const defaultCategory = mapCategoryText(defaultActive.querySelector('span').textContent.toLowerCase());
+                showFilteredProducts(defaultCategory);
+            }
+
             // Search functionality
             searchInput.addEventListener('input', function() {
                 const searchTerm = this.value.toLowerCase();
-                const products = document.querySelectorAll('.product-item');
-                
-                products.forEach(product => {
+                allProducts.forEach(product => {
                     const title = product.querySelector('h3').textContent.toLowerCase();
                     const description = product.querySelector('p').textContent.toLowerCase();
                     const tags = Array.from(product.querySelectorAll('.tag')).map(tag => tag.textContent.toLowerCase());
-                    
-                    const matchesSearch = title.includes(searchTerm) || 
-                                        description.includes(searchTerm) || 
-                                        tags.some(tag => tag.includes(searchTerm));
-                    
-                    if (matchesSearch) {
-                        product.style.display = 'flex';
-                    } else {
-                        product.style.display = 'none';
-                    }
+
+                    const matchesSearch = title.includes(searchTerm) ||
+                        description.includes(searchTerm) ||
+                        tags.some(tag => tag.includes(searchTerm));
+
+                    product.style.display = matchesSearch ? 'flex' : 'none';
                 });
             });
         });

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Careers | Cerevyn AI</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
@@ -37,30 +37,348 @@
         .btn-blue { background: var(--primary-blue); color: white; padding: 12px 28px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 14px; }
         .btn-outline { border: 1px solid rgba(255,255,255,0.2); color: white; padding: 12px 28px; border-radius: 50px; text-decoration: none; font-size: 14px; }
 
-        /* Grid Styling */
-        .section-header { text-align: center; margin: 80px 0 50px; }
-        .section-header h2 { font-size: 32px; margin-bottom: 15px; }
-        .grid-4, .grid-3 { display: grid; gap: 20px; }
-        .grid-4 { grid-template-columns: repeat(4, 1fr); }
-        .grid-3 { grid-template-columns: repeat(3, 1fr); }
-        
-        .card { background: var(--card-bg); padding: 25px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); }
-        .card h3 { font-size: 16px; margin-bottom: 10px; }
-        .card p { font-size: 12px; color: var(--text-gray); }
+        /* Culture & Benefits Section Styling - Background Removed */
+        .careers-culture {
+            background-color: transparent; /* Changed from #0d0d0d to match page */
+            padding: 100px 0;
+            font-family: 'Inter', sans-serif;
+            text-align: center;
+        }
 
-        /* Role Cards */
-        .tab-bar { background: rgba(255,255,255,0.05); padding: 5px; border-radius: 50px; display: inline-flex; margin: 30px 0 50px; border: 1px solid rgba(255,255,255,0.1); }
+        .figma-header h2 {
+            color: #ffffff;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .figma-header p {
+            color: #b0b0b0;
+            font-size: 1rem;
+            max-width: 650px;
+            margin: 0 auto 60px auto;
+        }
+
+        .spacing-top {
+            margin-top: 100px;
+        }
+
+        .culture-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        /* Square Boxes - Matches image_94cf4e.jpg */
+        .white-square-box {
+            background-color: #f8f9fa;
+            padding: 40px 30px;
+            text-align: left;
+            border-radius: 0px;
+            min-height: 280px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .white-square-box h3 {
+            color: #000000;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .white-square-box p {
+            color: #4b5563;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .icon-placeholder {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 25px;
+        }
+
+        .blue-icon {
+            font-size: 1.8rem;
+            color: #0047ff;
+            margin-bottom: 25px;
+        }
+
+        /* Role Cards Alignment Fix */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .join-team-section { background: transparent; padding: 100px 0; }
+        .join-team-section .section-header { text-align: center; margin-bottom: 60px; }
+        .join-team-section .section-header h2 { color: white; font-size: 36px; }
+        .join-team-section .section-header p { color: #b0b0b0; max-width: 760px; margin: 0 auto; }
+        .tab-bar { background: rgba(255,255,255,0.05); padding: 5px; border-radius: 50px; display: flex; justify-content: center; margin: 30px auto 50px; border: 1px solid rgba(255,255,255,0.1); width: fit-content; }
         .tab { padding: 8px 25px; border-radius: 50px; font-size: 13px; cursor: pointer; color: var(--text-gray); }
         .tab.active { background: var(--primary-blue); color: white; }
 
-        .role-card { background: white; border-radius: 15px; padding: 25px; color: #334155; text-align: left; }
-        .badge { background: #eff6ff; color: #3b82f6; font-size: 10px; padding: 3px 10px; border-radius: 4px; font-weight: 700; display: inline-block; margin-bottom: 10px; }
-        .role-card h4 { font-size: 16px; color: #0f172a; margin-bottom: 15px; border-bottom: 1px solid #f1f5f9; padding-bottom: 10px; }
-        .role-card h5 { font-size: 13px; color: #0f172a; margin: 10px 0 5px; }
-        .role-card p { font-size: 11px; color: #64748b; margin-bottom: 10px; }
-        .apply-btn { background: var(--primary-blue); color: white; border: none; padding: 10px; border-radius: 6px; width: 100%; cursor: pointer; font-weight: 600; }
+        .role-card { 
+            background: white; 
+            border-radius: 15px; 
+            padding: 30px; 
+            color: #334155; 
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .badge { background: #eff6ff; color: #3b82f6; font-size: 10px; padding: 3px 10px; border-radius: 4px; font-weight: 700; display: inline-block; margin-bottom: 10px; width: fit-content; }
+        .role-card h4 { font-size: 16px; color: #0f172a; margin-bottom: 15px; border-bottom: 1px solid #f1f5f9; padding-bottom: 10px; min-height: 45px; }
+        .role-card h5 { font-size: 13px; color: #0f172a; margin: 15px 0 5px; font-weight: 700; }
+        .role-card p { font-size: 12px; color: #64748b; margin-bottom: 10px; line-height: 1.5; flex-grow: 1; }
+        .apply-btn { background: var(--primary-blue); color: white; border: none; padding: 12px; border-radius: 6px; width: 100%; cursor: pointer; font-weight: 600; margin-top: 15px; }
 
-        /* Ready to Transform Section (Matches Image 1) */
+        .join-team-section {
+            background: transparent;
+            padding: 100px 0;
+            text-align: center;
+        }
+        .toggle-bar {
+            display: inline-flex;
+            background: #f8fafc;
+            padding: 4px;
+            border-radius: 999px;
+            border: 1px solid rgba(15, 23, 42, 0.08);
+            margin: 24px auto 0;
+        }
+        .tab-button {
+            padding: 12px 32px;
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            background: transparent;
+            color: #475569;
+            border: none;
+        }
+        .tab-button.active {
+            background: #2563eb;
+            color: white;
+            box-shadow: 0 12px 28px rgba(37, 99, 235, 0.25);
+        }
+        .role-cards {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            padding: 0 10px;
+        }
+        .roles-grid {
+            display: none;
+            width: 100%;
+            max-width: 1080px;
+            justify-content: center;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin: 0 auto;
+        }
+        .roles-grid.active {
+            display: flex;
+        }
+        .job-card {
+            width: 100%;
+            max-width: 340px;
+            background: transparent;
+            border-radius: 1.25rem;
+            overflow: visible;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            min-height: 520px;
+        }
+        .job-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+        }
+        .job-card-header {
+            background: linear-gradient(180deg, #2b88ff 0%, #1E76E5 100%);
+            color: white;
+            padding: 1.6rem 1.6rem 1.2rem;
+            text-align: left;
+            border-radius: 0.9rem 0.9rem 1.25rem 1.25rem;
+            box-shadow: 0 8px 24px rgba(30,118,229,0.16);
+        }
+        .job-card-header h2 {
+            font-size: 1.05rem;
+            font-weight: 800;
+            margin: 0 0 6px 0;
+            line-height: 1.25;
+            letter-spacing: -0.01em;
+            color: #ffffff;
+        }
+        .job-meta {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            font-size: 0.6rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 0.5rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+        }
+        .job-meta span {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 0.25rem;
+            padding: 0.25rem 0.5rem;
+        }
+        .job-card-body {
+            padding: 1.6rem;
+            color: #1f2937;
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            gap: 0.9rem;
+            background: white;
+            border: 1px solid rgba(15, 23, 42, 0.04);
+            border-radius: 0 0 1.25rem 1.25rem;
+            margin-top: -0.9rem;
+            box-shadow: 0 6px 18px rgba(2,6,23,0.12);
+            flex-grow: 1;
+            justify-content: space-between;
+        }
+        .job-card-body div {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .job-card-body h3 {
+            font-size: 0.7rem;
+            font-weight: 800;
+            margin: 0;
+            color: #6b7280;
+            text-transform: none;
+            letter-spacing: 0.02em;
+        }
+        .job-card-body p {
+            color: #374151;
+            font-size: 0.82rem;
+            line-height: 1.5;
+            margin: 0;
+        }
+        .requirements-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 0.25rem 0 0 0;
+        }
+        .requirement-pill {
+            background: #f8fafc;
+            border: 1px solid #e6eefc;
+            color: #0f172a;
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 0.4rem 0.85rem;
+            border-radius: 9999px;
+            white-space: nowrap;
+        }
+        .job-card-cta {
+            background: transparent;
+            padding: 1rem 0 0;
+            border-top: 1px solid rgba(15, 23, 42, 0.06);
+            margin-top: auto;
+        }
+        .job-card-cta h4 {
+            color: #1f2937;
+            font-size: 0.65rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        .job-card-cta p {
+            color: #6b7280;
+            font-size: 0.75rem;
+            line-height: 1.4;
+            margin-bottom: 0.75rem;
+        }
+        .apply-buttons {
+            display: flex;
+            gap: 0.75rem;
+            flex-direction: column;
+        }
+        .apply-buttons button {
+            flex: 1;
+            min-width: auto;
+            background: #0f172a;
+            border: none;
+            color: white;
+            border-radius: 1rem;
+            padding: 0.75rem 1rem;
+            font-size: 0.78rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            transition: background 0.18s ease;
+            text-transform: none;
+            letter-spacing: 0.01em;
+        }
+        .apply-buttons .primary-apply {
+            background: #1E76E5;
+            color: white;
+            border-radius: 1.25rem;
+            padding: 0.9rem 1rem;
+            font-weight: 800;
+        }
+        .apply-buttons .secondary-apply {
+            background: #0f172a;
+            color: white;
+            border-radius: 1rem;
+        }
+        .apply-buttons .linkedin-apply {
+            background: #1E76E5;
+        }
+
+        .icon-mail::before {
+            content: "✉️";
+        }
+        .icon-linkedin::before {
+            content: "in";
+            font-weight: 700;
+            letter-spacing: 0.04em;
+        }
+
+        /* Application Journey */
+        .application-journey-section {
+            background-color: transparent;
+            color: #ffffff;
+            padding: 120px 20px;
+            font-family: 'Inter', sans-serif;
+            text-align: center;
+        }
+
+        .journey-container { max-width: 1100px; margin: 0 auto; }
+        .journey-intro h2 { font-size: 2.8rem; font-weight: 700; margin-bottom: 15px; letter-spacing: -0.5px; }
+        .journey-intro p { font-size: 1.1rem; color: #cccccc; margin-bottom: 100px; }
+        .timeline-wrapper { position: relative; }
+        .center-line { position: absolute; top: 50px; left: 0; width: 100%; height: 1px; background-color: rgba(255, 255, 255, 0.2); z-index: 1; }
+        .steps-grid { display: flex; justify-content: space-between; position: relative; z-index: 2; }
+        .journey-step { flex: 1; display: flex; flex-direction: column; align-items: center; }
+        .circle { width: 100px; height: 100px; background-color: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; font-weight: 500; color: rgba(255, 255, 255, 0.5); margin-bottom: 40px; backdrop-filter: blur(5px); }
+        .journey-step h3 { font-size: 1.6rem; font-weight: 600; margin-bottom: 12px; }
+        .journey-step p { font-size: 0.95rem; color: #999999; line-height: 1.5; max-width: 200px; }
+
+        /* CTA & Footer */
         .ready-section { background: var(--primary-blue); padding: 100px 0; text-align: center; margin-top: 100px; }
         .ready-section h2 { font-size: 40px; font-weight: 800; margin-bottom: 20px; }
         .ready-section p { max-width: 800px; margin: 0 auto 40px; font-size: 15px; opacity: 0.9; }
@@ -68,34 +386,31 @@
         .btn-white-pill { background: white; color: var(--primary-blue); padding: 12px 35px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 14px; }
         .btn-outline-pill { border: 1.5px solid white; color: white; padding: 12px 35px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 14px; }
 
-        /* Footer Styling (Matches Image 2) */
         footer { background: var(--footer-bg); padding: 80px 0 40px; }
         .footer-grid { display: grid; grid-template-columns: 1.2fr 0.8fr 1fr 1fr; gap: 40px; margin-bottom: 60px; }
-        
-        .footer-logo-area img { height: 40px; margin-bottom: 20px; }
         .footer-logo-area .logo-placeholder { width: 150px; height: 45px; background: #e2e8f0; border-radius: 8px; margin-bottom: 25px; }
         .footer-logo-area p { font-size: 13px; color: var(--text-gray); margin-bottom: 25px; line-height: 1.6; }
         .social-links { display: flex; gap: 15px; }
         .social-links a { color: white; font-size: 18px; opacity: 0.8; }
-
         .footer-col h4 { font-size: 15px; margin-bottom: 25px; font-weight: 700; }
         .footer-col ul { list-style: none; }
         .footer-col ul li { margin-bottom: 12px; position: relative; padding-left: 15px; }
         .footer-col ul li::before { content: "•"; position: absolute; left: 0; color: white; }
         .footer-col ul li a { color: var(--text-gray); text-decoration: none; font-size: 13px; }
-
-        .newsletter-box p { font-size: 13px; margin-bottom: 20px; }
-        .input-group { position: relative; margin-bottom: 15px; }
         .input-group input { width: 100%; background: #f1f5f9; border: none; padding: 15px 20px; border-radius: 10px; font-size: 13px; color: #334155; }
         .subscribe-btn { width: 100%; background: var(--primary-blue); color: white; border: none; padding: 15px; border-radius: 10px; font-weight: 700; cursor: pointer; }
-
-        .contact-box h4 { font-size: 15px; margin-top: 30px; margin-bottom: 15px; }
-        .contact-box p { font-size: 13px; color: var(--text-gray); margin-bottom: 8px; }
-        .contact-box span { color: white; font-weight: 600; }
-
         .footer-bottom { border-top: 1px solid rgba(255,255,255,0.05); padding-top: 30px; display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--text-gray); }
         .footer-links { display: flex; gap: 20px; }
         .made-with { color: white; font-weight: 600; }
+
+        @media (max-width: 1024px) {
+            .culture-grid, .benefits-grid, .grid-3 { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .culture-grid, .benefits-grid, .grid-3 { grid-template-columns: 1fr; }
+            .steps-grid { flex-direction: column; gap: 60px; }
+            .center-line { display: none; }
+        }
     </style>
 </head>
 <body>
@@ -106,7 +421,8 @@
             <a href="index.html">Home</a>
             <a href="services.html">Services</a>
             <a href="products.html">Products</a>
-            <a href="#">Resources ⌵</a>
+            <a href="Tutorials.html">Tutorials</a>
+            <a href="Blogs.html">Blogs</a>
             <a href="careers.html" class="active">Careers</a>
             <a href="#">About</a>
             <a href="#">Contact</a>
@@ -122,56 +438,132 @@
         </div>
     </section>
 
-    <!-- Culture Section -->
-    <div class="section-header">
-        <h2>Our Culture & Values</h2>
-        <p>We're building more than AI products - we're building a community of innovators who care about impact.</p>
-    </div>
-    <div class="grid-4">
-        <div class="card"><h3>Innovation First</h3><p>We encourage experimentation and reward creative problem-solving.</p></div>
-        <div class="card"><h3>Impact Driven</h3><p>Every project aims to create meaningful change in Industries</p></div>
-        <div class="card"><h3>Collaborative Excellence</h3><p>We believe in the power of diverse perspectives and teamwork.</p></div>
-        <div class="card"><h3>Continuous Learning</h3><p>We invest in your growth with regar training and development.</p></div>
-    </div>
+    <!-- Background colour removed to match site theme -->
+    <section class="careers-culture">
+        <div class="container">
+            <div class="figma-header">
+                <h2>Our Culture & Values</h2>
+                <p>We're building more than AI products - we're building a community of innovators who care about impact.</p>
+            </div>
 
-    <!-- Career Roles Section -->
-    <section id="roles" style="text-align: center; margin-top: 100px;">
-        <h2>Join Our Team</h2>
-        <div class="tab-bar">
-            <div class="tab active">Internship Roles</div>
-            <div class="tab">Full-Time Roles</div>
+            <div class="culture-grid">
+                <div class="white-square-box">
+                    <div class="icon-placeholder">◎</div>
+                    <h3>Innovation First</h3>
+                    <p>We encourage experimentation and reward creative problem-solving.</p>
+                </div>
+                <div class="white-square-box">
+                    <div class="icon-placeholder">▤</div>
+                    <h3>Impact Driven</h3>
+                    <p>Every project aims to create meaningful change in industries.</p>
+                </div>
+                <div class="white-square-box">
+                    <div class="icon-placeholder">&lt;/&gt;</div>
+                    <h3>Collaborative Excellence</h3>
+                    <p>We believe in the power of diverse perspectives and teamwork.</p>
+                </div>
+                <div class="white-square-box">
+                    <div class="icon-placeholder">🚀</div>
+                    <h3>Continuous Learning</h3>
+                    <p>We invest in your growth with regular training and development.</p>
+                </div>
+            </div>
+
+            <div class="figma-header spacing-top">
+                <h2>Why You'll Love Working Here</h2>
+            </div>
+
+            <div class="benefits-grid">
+                <div class="white-square-box">
+                    <div class="blue-icon">⚡</div>
+                    <h3>Growth Acceleration</h3>
+                    <p>Fast-track career growth with challenging projects and leadership opportunities.</p>
+                </div>
+                <div class="white-square-box">
+                    <div class="blue-icon">🛡️</div>
+                    <h3>Cutting-Edge Tech</h3>
+                    <p>Work with the latest AI technologies and frameworks on real-world problems.</p>
+                </div>
+                <div class="white-square-box">
+                    <div class="blue-icon">👥</div>
+                    <h3>Expert Mentorship</h3>
+                    <p>Learn from industry veterans and AI research pioneers.</p>
+                </div>
+                <div class="white-square-box">
+                    <div class="blue-icon">🌐</div>
+                    <h3>Global Impact</h3>
+                    <p>Build solutions that transform industries worldwide.</p>
+                </div>
+                <div class="white-square-box">
+                    <div class="blue-icon">🏠</div>
+                    <h3>Work-Life Harmony</h3>
+                    <p>Flexible schedules and supportive work environment.</p>
+                </div>
+                <div class="white-square-box">
+                    <div class="blue-icon">🏆</div>
+                    <h3>Recognition</h3>
+                    <p>Competitive compensation and performance bonuses.</p>
+                </div>
+            </div>
         </div>
-        <div class="grid-3">
-            <div class="role-card">
-                <span class="badge">3-6 Months Intern</span>
-                <h4>Full Stack Development Intern</h4>
-                <h5>Focus Areas</h5><p>React, TypeScript, Node.js, and cloud-first architectures for enterprise AI products.</p>
-                <h5>You'll Experience</h5><p>React, TypeScript, Node.js, and cloud-first architectures for enterprise AI products.</p>
-                <button class="apply-btn">Apply Now</button>
+    </section>
+
+    <section id="roles" class="join-team-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Join Our Team</h2>
+                <p>Explore our open roles and find the career path that fits your skills and ambition.</p>
             </div>
-            <div class="role-card">
-                <span class="badge">3-6 Months Intern</span>
-                <h4>AI & Machine Learning Intern</h4>
-                <h5>Focus Areas</h5><p>Model experimentation, data pipelines, and applied ML for healthcare, education, and automation.</p>
-                <h5>You'll Experience</h5><p>Ship ML prototypes to production and learn model lifecycle management with real datasets.</p>
-                <button class="apply-btn">Apply Now</button>
+            <div class="toggle-bar">
+                <button class="tab-button active" data-target="internship">Internship Roles</button>
+                <button class="tab-button" data-target="fulltime">Full-Time Roles</button>
             </div>
-            <div class="role-card">
-                <span class="badge">3-6 Months Intern</span>
-                <h4>Agentic AI Intern</h4>
-                <h5>Focus Areas</h5><p>LLM integration, retrieval augmented generation, and autonomous agent workflows.</p>
-                <h5>You'll Experience</h5><p>Design intelligent agents that orchestrate API, memory systems, and multi-modal experiences.</p>
-                <button class="apply-btn">Apply Now</button>
+            <div class="role-cards">
+                <div class="roles-grid active" id="rolesContainer">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="application-journey-section">
+        <div class="journey-container">
+            <div class="journey-intro">
+                <h2>Application Journey</h2>
+                <p>Our streamlined process ensures you get to showcase your skills and learn about our team.</p>
+            </div>
+            <div class="timeline-wrapper">
+                <div class="center-line"></div>
+                <div class="steps-grid">
+                    <div class="journey-step">
+                        <div class="circle">01</div>
+                        <h3>Apply</h3>
+                        <p>Submit your resume and portfolio</p>
+                    </div>
+                    <div class="journey-step">
+                        <div class="circle">02</div>
+                        <h3>Screening</h3>
+                        <p>Initial chat with our talent team</p>
+                    </div>
+                    <div class="journey-step">
+                        <div class="circle">03</div>
+                        <h3>Technical</h3>
+                        <p>Skills assessment & problem-solving</p>
+                    </div>
+                    <div class="journey-step">
+                        <div class="circle">04</div>
+                        <h3>Team Fit</h3>
+                        <p>Meet the team and final discussions</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 </div>
 
-<!-- Ready to Transform Section (Exact Match to Image 1) -->
 <section class="ready-section">
     <div class="container">
         <h2>Ready to Transform Your Business?</h2>
-        <p>Partner with Cerevyn to leverage cutting-edge AI solutions including drones, surveying, and automation that drive innovation and create competitive advantages in your industry.</p>
+        <p>Partner with Cerevyn to leverage cutting-edge AI solutions including drones, surveying, and automation that drive innovation.</p>
         <div class="ready-btns">
             <a href="#" class="btn-white-pill">Start Your AI Journey</a>
             <a href="#" class="btn-outline-pill">Learn About Us</a>
@@ -179,7 +571,6 @@
     </div>
 </section>
 
-<!-- Footer (Exact Match to Image 2) -->
 <footer>
     <div class="container">
         <div class="footer-grid">
@@ -191,64 +582,154 @@
                     <a href="#"><i class="fab fa-twitter"></i></a>
                     <a href="#"><i class="fab fa-linkedin"></i></a>
                     <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
-
             <div class="footer-col">
                 <h4>Quick Links</h4>
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">Mission & Vision</a></li>
-                    <li><a href="#">Careers</a></li>
-                    <li><a href="#">Tutorials</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li> Home</li>
+                    <li> About Us</li>
+                    <li> Services</li>
+                    <li> Mission & Vision</li>
+                    <li> Careers</li>
+                    <li> Tutorials</li>
+                    <li> Blog</li>
+                    <li> Contact</li>
                 </ul>
             </div>
-
             <div class="footer-col">
                 <h4>Our Services</h4>
                 <ul>
-                    <li><a href="#">AI Healthcare Solutions</a></li>
-                    <li><a href="#">AI Education Platforms</a></li>
-                    <li><a href="#">AI Development Services</a></li>
-                    <li><a href="#">AI Automation Systems</a></li>
-                    <li><a href="#">Agentic AI Solutions</a></li>
-                    <li><a href="#">Entity Management Portal</a></li>
+                        <li> AI Healthcare Solutions</li>
+                        <li> AI Education Platforms</li>
+                        <li> AI Development Services</li>
+                        <li> AI Automation Systems</li>
+                        <li> Agentic AI Solutions</li>
+                        <li> Entity Management Portal</li>
                 </ul>
             </div>
-
-            <div class="footer-col newsletter-box">
-                <p>Subscribe to our newsletter for AI insights and updates.</p>
-                <div class="input-group">
-                    <input type="text" placeholder="Your email address">
+            <!-- Newsletter & Contact -->
+                <div>
+                    <p style="font-size: 14px; color: #f8fafc; margin-bottom: 15px; font-weight: 500;">Subscribe to our newsletter for AI insights and updates.</p>
+                    <input type="text" placeholder="Your email address" style="width: 100%; padding: 12px 15px; border-radius: 8px; border: none; background: white; margin-bottom: 10px; font-size: 13px;">
+                    <button style="width: 100%; background: #007bff; color: white; padding: 12px; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; margin-bottom: 30px;">Subscribe</button>
+                    
+                    <h4 style="font-size: 16px; font-weight: 700; margin-bottom: 15px;">Contact Us</h4>
+                    <p style="font-size: 13px; color: #94a3b8; margin-bottom: 8px;"><strong>Email Us:</strong> info@cerevyn.com</p>
+                    <p style="font-size: 13px; color: #94a3b8; margin-bottom: 15px;"><strong>Call Us:</strong> +91 78935 25665</p>
+                    <p style="font-size: 12px; color: #64748b; line-height: 1.5;">
+                        Our Headquarters:<br>
+                        T-Hub, Hyderabad Knowledge City, Serilingampally, Hyderabad, Telangana 500081, India
+                    </p>
                 </div>
-                <button class="subscribe-btn">Subscribe</button>
+            </div>
 
-                <div class="contact-box">
-                    <h4>Contact Us</h4>
-                    <p>Email Us: <span>info@cerevyn.com</span></p>
-                    <p>Call Us: <span>+91 78935 25665</span></p>
-                    <p style="margin-top: 15px; font-size: 11px;">Our Headquarters:<br>T-Hub, Hyderabad Knowledge City, Serilingampally, Hyderabad, Telangana 500081, India.</p>
+            <!-- Bottom Copyright Bar -->
+            <div style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 30px; display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: #64748b; flex-wrap: wrap; gap: 15px;">
+                <div>© 2026 Cerevyn Solutions Pvt Ltd. All rights reserved.</div>
+                <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+                    <span>Privacy Policy</span>
+                    <span>Terms of Service</span>
+                    <span>Cookie Policy</span>
+                    <span>Sitemap</span>
+                    <span style="color: white;">Made with passion in India</span>
                 </div>
             </div>
         </div>
+    </footer>
+    <script src="script.js"></script>
+    <script>
+    const roles = {
+        internship: [
+            {
+                title: "Full Stack Development Intern",
+                meta: "3-6 Months | Hybrid",
+                focus: "React, TypeScript, Node.js, and cloud-first architectures for enterprise AI products.",
+                experience: "React, TypeScript, Node.js, and cloud-first architectures for enterprise AI products.",
+                skills: ["React", "TypeScript", "Node.js", "AWS/Azure", "CI/CD"]
+            },
+            {
+                title: "AI & Machine Learning Intern",
+                meta: "3-6 Months | Hybrid",
+                focus: "Model experimentation, data pipelines, and applied ML for healthcare, education, and automation.",
+                experience: "Ship ML prototypes to production and learn model lifecycle management with real datasets.",
+                skills: ["Python", "TensorFlow", "PyTorch", "MLOps", "Data Pipelines"]
+            },
+            {
+                title: "Agentic AI Intern",
+                meta: "3-6 Months | Hybrid",
+                focus: "LLM integration, retrieval-augmented generation (RAG), and autonomous agent workflows.",
+                experience: "Design intelligent agents that orchestrate APIs, memory systems, and multi-modal experiences.",
+                skills: ["LLMs", "LangChain", "RAG", "APIs", "Multi-modal AI"]
+            }
+        ],
+        fulltime: [
+            {
+                title: "AI Software Engineer (AWS & Azure)",
+                meta: "1-3 Years | Onsite - Hyderabad, India",
+                focus: "Build and deploy scalable AI/ML services across AWS and Azure. Automate data pipelines and containerized model deployments. Collaborate with AI, DevOps, and product teams to launch production AI solutions.",
+                experience: "Experience with cloud platforms (AWS/Azure), Strong Python/TypeScript skills, Understanding of containerization, Knowledge of CI/CD pipelines.",
+                skills: ["AWS", "Azure", "Python", "TypeScript", "Docker"]
+            },
+            {
+                title: "Agentic AI Developer",
+                meta: "1-3 Years | Onsite - Hyderabad, India",
+                focus: "Design autonomous agents powered by LLMs and retrieval systems. Create multi-agent workflows with voice and multimodal interfaces. Ship production-ready agents leveraging LangChain, LlamaIndex, and modern MLOps stacks.",
+                experience: "Experience with LLMs and agent frameworks, Strong problem-solving skills, Knowledge of RAG systems, Experience with API integration.",
+                skills: ["LLMs", "LangChain", "LlamaIndex", "RAG", "APIs"]
+            }
+        ]
+    };
 
-        <div class="footer-bottom">
-            <p>© 2026 Cerevyn Solutions Pvt Ltd. All rights reserved.</p>
-            <div class="footer-links">
-                <a href="#" style="color: inherit; text-decoration: none;">Privacy Policy</a>
-                <a href="#" style="color: inherit; text-decoration: none;">Terms of Service</a>
-                <a href="#" style="color: inherit; text-decoration: none;">Cookie Policy</a>
-                <a href="#" style="color: inherit; text-decoration: none;">Sitemap</a>
-                <span class="made-with">Made with passion in India</span>
+    function renderRoles(type) {
+        const container = document.getElementById('rolesContainer');
+        container.innerHTML = roles[type].map(role => `
+            <div class="job-card">
+                <div class="job-card-header">
+                    <h2>${role.title}</h2>
+                    <div class="job-meta">
+                        <span>${role.meta}</span>
+                    </div>
+                </div>
+                <div class="job-card-body">
+                    <div>
+                        <h3>${type === 'internship' ? 'Focus Areas' : "What You'll Do"}</h3>
+                        <p>${role.focus}</p>
+                    </div>
+                    <div>
+                        <h3>${type === 'internship' ? "You'll Experience" : "Requirements"}</h3>
+                        <p>${role.experience}</p>
+                    </div>
+                    <div class="requirements-tags">
+                        ${role.skills.map(s => `<span class="requirement-pill">${s}</span>`).join('')}
+                    </div>
+                    <div class="job-card-cta">
+                        <h4>How to Apply</h4>
+                        <p>Share your resume, portfolio, and area of interest with our team.</p>
+                        <div class="apply-buttons">
+                            ${type === 'internship' 
+                                ? `<button style="background: #1E76E5; width: 100%; border-radius: 1rem; color: white; border: none; padding: 10px; cursor: pointer;">Apply Now ↗</button>` 
+                                : `<button class="apply-mail"><i class="fas fa-envelope"></i> Apply Via mail</button>
+                                   <button class="apply-linkedin"><i class="fab fa-linkedin"></i> LinkedIn Easy Apply</button>`
+                            }
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-</footer>
+        `).join('');
+    }
 
+    document.addEventListener('DOMContentLoaded', () => {
+        renderRoles('internship');
+
+        document.querySelectorAll('.tab-button').forEach(button => {
+            button.addEventListener('click', () => {
+                document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                renderRoles(button.getAttribute('data-target'));
+            });
+        });
+    });
+    </script>
 </body>
 </html>
