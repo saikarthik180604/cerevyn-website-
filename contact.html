@@ -163,35 +163,41 @@
             </div>
         </div>
     </section>
-
-    <section class="py-24 px-6 max-w-6xl mx-auto">
-        <h2 class="text-4xl font-bold mb-4">Send us a Message</h2>
-        <p class="text-gray-400 mb-16 text-lg">Fill out the form below and we'll get back to you within 24 hours</p>
+<section class="py-24 px-6 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
         
-        <form class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
+        <!-- LEFT SIDE: Title and Description -->
+        <div class="text-left sticky top-32">
+            <h2 class="text-4xl font-bold mb-4">Send us a Message</h2>
+            <p class="text-gray-400 text-lg leading-relaxed max-w-md">
+                Fill out the form below and we'll get back to you within 24 hours.
+            </p>
+        </div>
+        
+        <!-- RIGHT SIDE: The Inputs Form -->
+        <form class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
             <div>
-                <label class="input-label">Full Name <span>*</span></label>
+                <label class="input-label text-[13px] font-medium text-gray-300 block mb-2">Full Name <span class="text-red-500">*</span></label>
                 <input type="text" class="figma-input" placeholder="Enter your full name">
             </div>
             <div>
-                <label class="input-label">Last Name <span>*</span></label>
+                <label class="input-label text-[13px] font-medium text-gray-300 block mb-2">Last Name <span class="text-red-500">*</span></label>
                 <input type="text" class="figma-input" placeholder="Enter your last name">
             </div>
             <div>
-                <label class="input-label">Email Address <span>*</span></label>
+                <label class="input-label text-[13px] font-medium text-gray-300 block mb-2">Email Address <span class="text-red-500">*</span></label>
                 <input type="email" class="figma-input" placeholder="example@domain.com">
             </div>
             <div>
-                <label class="input-label">Company <span>*</span></label>
+                <label class="input-label text-[13px] font-medium text-gray-300 block mb-2">Company <span class="text-red-500">*</span></label>
                 <input type="text" class="figma-input" placeholder="Your company name">
             </div>
             <div>
-                <label class="input-label">Phone Number <span>*</span></label>
+                <label class="input-label text-[13px] font-medium text-gray-300 block mb-2">Phone Number <span class="text-red-500">*</span></label>
                 <input type="tel" class="figma-input" placeholder="+91 00000 00000">
             </div>
             <div>
-                <label class="input-label">Service Interested In <span>*</span></label>
-                <select class="figma-input bg-black">
+                <label class="input-label text-[13px] font-medium text-gray-300 block mb-2">Service Interested In <span class="text-red-500">*</span></label>
+                <select class="figma-input bg-black w-full">
                     <option value="" disabled selected>Select a service</option>
                     <option value="healthcare">AI Healthcare Solutions</option>
                     <option value="education">AI Education Platforms</option>
@@ -199,14 +205,14 @@
                 </select>
             </div>
             <div class="md:col-span-2 pt-6">
-                <button type="submit" class="w-full bg-[#0047FF] hover:bg-blue-700 text-white font-bold py-5 rounded-lg text-lg transition-all">Send Message</button>
+                <button type="submit" class="w-full bg-[#0047FF] hover:bg-blue-700 text-white font-bold py-5 rounded-lg text-lg transition-all shadow-md">Send Message</button>
                 <p class="text-[11px] text-center mt-8 text-gray-500 uppercase tracking-widest">
-                    By submitting this form, you agree to our <a href="#" class="underline">Privacy Policy</a> and <a href="#" class="underline">Terms of Service</a>.
+                    By submitting this form, you agree to our <a href="#" class="underline hover:text-white">Privacy Policy</a> and <a href="#" class="underline hover:text-white">Terms of Service</a>.
                 </p>
             </div>
         </form>
-    </section>
 
+    </section>
     <section class="py-24 px-6 max-w-7xl mx-auto">
         <h2 class="text-4xl font-bold mb-20">Get in Touch</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -312,6 +318,5 @@
             </div>
         </div>
     </footer>
-
 </body>
 </html>
