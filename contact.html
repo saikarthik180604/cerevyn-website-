@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Cerevyn AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism Navigation */
+        .nav-glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border-radius: 100px;
+            padding: 10px 28px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Curved Hero Logic */
+        .contact-hero {
+            background: linear-gradient(180deg, #001A4D 0%, #000000 100%);
+            position: relative;
+            padding: 180px 24px 120px;
+            text-align: center;
+        }
+
+        .hero-curve {
+            position: absolute;
+            width: 160%;
+            height: 120%;
+            border: 1px solid rgba(0, 71, 255, 0.2);
+            border-radius: 50%;
+            top: -30%;
+            left: -30%;
+            pointer-events: none;
+        }
+
+        /* White Info Cards */
+        .figma-card {
+            background: #FFFFFF;
+            border-radius: 12px;
+            padding: 40px 24px;
+            color: #000;
+            text-align: center;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .icon-box {
+            width: 48px;
+            height: 48px;
+            background-color: #EBF2FF;
+            color: #0047FF;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+
+        /* Form Logic */
+        .figma-input {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+            width: 100%;
+            padding: 12px 0;
+            color: white;
+            outline: none;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        .figma-input:focus {
+            border-bottom-color: #0047FF;
+        }
+
+        .input-label {
+            display: block;
+            font-size: 13px;
+            color: white;
+            margin-bottom: -4px;
+        }
+
+        .input-label span {
+            color: #0047FF;
+        }
+
+        /* Contact Details Bordered Cards */
+        .contact-info-border {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 48px 32px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.02);
+        }
+    </style>
+</head>
+<body>
+
+    <header class="fixed w-full top-8 z-50 px-6">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="text-2xl font-bold italic">Cerevyn</div>
+            <nav class="nav-glass hidden lg:flex space-x-8 text-[13px] font-medium">
+                <a href="index.html" class="hover:text-blue-400">Home</a>
+                <a href="services.html" class="hover:text-blue-400">Services</a>
+                <a href="products.html" class="hover:text-blue-400">Products</a>
+                <a href="tutorials.html" class="hover:text-blue-400">Tutorials</a>
+                <a href="blog.html" class="hover:text-blue-400">Blog</a>
+                <a href="careers.html" class="hover:text-blue-400">Careers</a>
+                <a href="about.html" class="hover:text-blue-400">About Us</a>
+                <a href="contact.html" class="text-blue-400 font-bold underline underline-offset-4">Contact</a>
+            </nav>
+            <div class="lg:hidden text-2xl"><i class="fas fa-bars"></i></div>
+        </div>
+    </header>
+
+    <section class="contact-hero">
+        <div class="hero-curve"></div>
+        <div class="max-w-4xl mx-auto relative z-10">
+            <h1 class="text-5xl md:text-7xl font-bold mb-8">Let's Build the Future Together</h1>
+            <p class="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+                A global AI company dedicated to transforming industries through intelligent solutions and cutting-edge technology that empowers businesses worldwide.
+            </p>
+        </div>
+    </section>
+
+    <section class="py-12 px-6 max-w-7xl mx-auto -mt-24 relative z-20">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="figma-card">
+                <div class="icon-box"><i class="fas fa-rocket"></i></div>
+                <h3 class="font-bold text-lg mb-3">Quick Response</h3>
+                <p class="text-xs text-gray-500 leading-relaxed">Get a response within 24 hours from our AI experts.</p>
+            </div>
+            <div class="figma-card">
+                <div class="icon-box"><i class="fas fa-shield-alt"></i></div>
+                <h3 class="font-bold text-lg mb-3">Secure Communication</h3>
+                <p class="text-xs text-gray-500 leading-relaxed">Continuously advancing the frontiers of AI research and application.</p>
+            </div>
+            <div class="figma-card">
+                <div class="icon-box"><i class="fas fa-cog"></i></div>
+                <h3 class="font-bold text-lg mb-3">Tailored Solutions</h3>
+                <p class="text-xs text-gray-500 leading-relaxed">Developing AI solutions that are ethical, transparent, and beneficial.</p>
+            </div>
+            <div class="figma-card">
+                <div class="icon-box"><i class="fas fa-user-check"></i></div>
+                <h3 class="font-bold text-lg mb-3">Expert Guidance</h3>
+                <p class="text-xs text-gray-500 leading-relaxed">Working with partners globally to maximize positive impact.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-6 max-w-6xl mx-auto">
+        <h2 class="text-4xl font-bold mb-4">Send us a Message</h2>
+        <p class="text-gray-400 mb-16 text-lg">Fill out the form below and we'll get back to you within 24 hours</p>
+        
+        <form class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
+            <div>
+                <label class="input-label">Full Name <span>*</span></label>
+                <input type="text" class="figma-input" placeholder="Enter your full name">
+            </div>
+            <div>
+                <label class="input-label">Last Name <span>*</span></label>
+                <input type="text" class="figma-input" placeholder="Enter your last name">
+            </div>
+            <div>
+                <label class="input-label">Email Address <span>*</span></label>
+                <input type="email" class="figma-input" placeholder="example@domain.com">
+            </div>
+            <div>
+                <label class="input-label">Company <span>*</span></label>
+                <input type="text" class="figma-input" placeholder="Your company name">
+            </div>
+            <div>
+                <label class="input-label">Phone Number <span>*</span></label>
+                <input type="tel" class="figma-input" placeholder="+91 00000 00000">
+            </div>
+            <div>
+                <label class="input-label">Service Interested In <span>*</span></label>
+                <select class="figma-input bg-black">
+                    <option value="" disabled selected>Select a service</option>
+                    <option value="healthcare">AI Healthcare Solutions</option>
+                    <option value="education">AI Education Platforms</option>
+                    <option value="automation">AI Automation Systems</option>
+                </select>
+            </div>
+            <div class="md:col-span-2 pt-6">
+                <button type="submit" class="w-full bg-[#0047FF] hover:bg-blue-700 text-white font-bold py-5 rounded-lg text-lg transition-all">Send Message</button>
+                <p class="text-[11px] text-center mt-8 text-gray-500 uppercase tracking-widest">
+                    By submitting this form, you agree to our <a href="#" class="underline">Privacy Policy</a> and <a href="#" class="underline">Terms of Service</a>.
+                </p>
+            </div>
+        </form>
+    </section>
+
+    <section class="py-24 px-6 max-w-7xl mx-auto">
+        <h2 class="text-4xl font-bold mb-20">Get in Touch</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="contact-info-border">
+                <div class="w-14 h-14 bg-[#0047FF] rounded-xl flex items-center justify-center mx-auto mb-8 shadow-lg shadow-blue-900/20">
+                    <i class="fas fa-envelope text-white text-xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-4">Email Us</h3>
+                <p class="text-blue-500 font-medium mb-3 text-lg">info.cerevyn@gmail.com</p>
+                <p class="text-gray-500 text-sm">We typically respond within 24 hours</p>
+            </div>
+            <div class="contact-info-border">
+                <div class="w-14 h-14 bg-[#0047FF] rounded-xl flex items-center justify-center mx-auto mb-8 shadow-lg shadow-blue-900/20">
+                    <i class="fas fa-phone-alt text-white text-xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-4">Call Us</h3>
+                <p class="text-blue-500 font-medium mb-3 text-lg">+91 70134 82933</p>
+                <p class="text-gray-500 text-sm">Monday to Friday, 9 AM - 6 PM IST</p>
+            </div>
+            <div class="contact-info-border">
+                <div class="w-14 h-14 bg-[#0047FF] rounded-xl flex items-center justify-center mx-auto mb-8 shadow-lg shadow-blue-900/20">
+                    <i class="fas fa-map-marker-alt text-white text-xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-4">Visit Us</h3>
+                <p class="text-gray-400 text-sm leading-relaxed px-4">
+                    T-Hub, Hyderabad Knowledge City, Serilingampally, Hyderabad, Telangana 500081
+                </p>
+            </div>
+        </div>
+        <p class="text-[11px] text-blue-500 mt-12 text-center font-bold tracking-widest uppercase">
+            * Office Hours: Monday-Friday 9:00 AM - 6:00 PM IST | Saturday 10:00 AM - 2:00 PM IST | Sunday Closed
+        </p>
+    </section>
+
+    <section class="bg-[#0047FF] py-28 px-6 text-center">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-4xl md:text-6xl font-bold mb-8">Schedule a Free Consultation</h2>
+            <p class="text-xl opacity-90 mb-12 max-w-3xl mx-auto leading-relaxed">
+                Book a 30-minute strategy session with our AI experts. Discuss your requirements, explore potential solutions, and get a customized roadmap for your AI transformation.
+            </p>
+            <button class="bg-white text-[#0047FF] px-12 py-4 rounded-full font-bold text-lg hover:scale-105 transition-transform">Book Free Consultation</button>
+        </div>
+    </section>
+
+    <footer class="bg-black pt-24 pb-12 px-6 border-t border-gray-900">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
+            <div>
+                <div class="text-3xl font-bold italic mb-8">Cerevyn</div>
+                <p class="text-gray-500 text-sm leading-relaxed mb-10">
+                    A global AI company transforming healthcare, education, and business operations with intelligent solutions designed for a smarter, more connected tomorrow.
+                </p>
+                <div class="flex space-x-4">
+                    <a href="#" class="w-10 h-10 border border-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="w-10 h-10 border border-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="w-10 h-10 border border-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="w-10 h-10 border border-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div>
+                <h4 class="font-bold mb-8 text-xs uppercase tracking-[0.2em] text-blue-500">Quick Links</h4>
+                <ul class="space-y-4 text-gray-400 text-sm">
+                    <li><a href="index.html" class="hover:text-white transition">• Home</a></li>
+                    <li><a href="about.html" class="hover:text-white transition">• About Us</a></li>
+                    <li><a href="services.html" class="hover:text-white transition">• Services</a></li>
+                    <li><a href="careers.html" class="hover:text-white transition">• Careers</a></li>
+                    <li><a href="blog.html" class="hover:text-white transition">• Blog</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-8 text-xs uppercase tracking-[0.2em] text-blue-500">Our Services</h4>
+                <ul class="space-y-4 text-gray-400 text-sm">
+                    <li>• AI Healthcare Solutions</li>
+                    <li>• AI Education Platforms</li>
+                    <li>• AI Development Services</li>
+                    <li>• AI Automation Systems</li>
+                    <li>• Agentic AI Solutions</li>
+                </ul>
+            </div>
+            <div>
+                    <p style="font-size: 14px; color: #f8fafc; margin-bottom: 15px; font-weight: 500;">Subscribe to our newsletter for AI insights and updates.</p>
+                    <input type="text" placeholder="Your email address" style="width: 100%; padding: 12px 15px; border-radius: 8px; border: none; background: white; margin-bottom: 10px; font-size: 13px;">
+                    <button style="width: 100%; background: #007bff; color: white; padding: 12px; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; margin-bottom: 30px;">Subscribe</button>
+                    
+                    <h4 style="font-size: 16px; font-weight: 700; margin-bottom: 15px;">Contact Us</h4>
+                    <p style="font-size: 13px; color: #94a3b8; margin-bottom: 8px;"><strong>Email Us:</strong> info@cerevyn.com</p>
+                    <p style="font-size: 13px; color: #94a3b8; margin-bottom: 15px;"><strong>Call Us:</strong> +91 78935 25665</p>
+                    <p style="font-size: 12px; color: #64748b; line-height: 1.5;">
+                        Our Headquarters:<br>
+                        T-Hub, Hyderabad Knowledge City, Serilingampally, Hyderabad, Telangana 500081, India
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto pt-10 border-t border-gray-900 flex flex-col md:flex-row justify-between items-center text-[10px] text-gray-600 uppercase tracking-widest">
+            <p>© 2026 Cerevyn Solutions Pvt Ltd. All rights reserved.</p>
+            <div class="flex space-x-8 mt-6 md:mt-0">
+                <span class="hover:text-white cursor-pointer transition">Privacy Policy</span>
+                <span class="hover:text-white cursor-pointer transition">Terms of Service</span>
+                <span class="hover:text-white cursor-pointer transition">Made with passion in India</span>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
